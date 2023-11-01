@@ -6,6 +6,8 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./component/Header";
 import HomePage from "./component/HomePage";
 import { useLocation } from 'react-router-dom';
+import DetailProduct from "./component/DetailProduct";
+import Cart from "./component/Cart";
 
 
 function App() {
@@ -18,8 +20,10 @@ function App() {
           <Header></Header>
         </>
       )}
-      
+
       <Routes>
+        <Route path="/cart" element={<Cart></Cart>}></Route>
+        <Route path="/detailproduct" element={<DetailProduct></DetailProduct>}></Route>
         <Route path="/" element={<HomePage></HomePage>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
       </Routes>
