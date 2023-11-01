@@ -4,6 +4,7 @@ const Footer = () => {
       <>
         <>
           {/* Remove the container if you want to extend the Footer to full width. */}
+          <div className="mt-5"> </div>
           <div>
             {/* Footer */}
             <footer
