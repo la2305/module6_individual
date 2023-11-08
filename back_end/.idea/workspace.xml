@@ -4,7 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6061a328-6e03-4dd5-8aed-a88817083f70" name="Changes" comment="" />
+    <list default="true" id="6061a328-6e03-4dd5-8aed-a88817083f70" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/controller/user/TestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/controller/user/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/jwt/JwtAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/jwt/JwtTokenProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/entity/ERole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/entity/Roles.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/entity/Users.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/payload/request/LoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/payload/request/SignupRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/payload/response/JwtResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/payload/response/MessageResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/repository/Users/RoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/repository/Users/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/security/CustomUserDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/security/CustomUserDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/security/WebSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/service/user/IRoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/service/user/IUserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/service/user/RoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/service/user/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/not/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/not/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/oder/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/oder/Carts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/oder/OderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/oder/OderDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/oder/OrderBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/oder/OrderBills.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/product/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/product/Images.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/product/Products.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/product/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/product/Types.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/user/Roles.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/user/Roless.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/user/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/user/UserRoles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/user/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/user/Userss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/not/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/vegetable/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/vegetable/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/vegetable/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/vegetable/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/vegetable/src/component/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/src/component/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/vegetable/src/component/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/src/component/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/vegetable/src/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/src/css/header.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,9 +52,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2XbqGgg4hQu339lNwesXLlvV99X" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -27,7 +69,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "E:/codegym/_C0323G1_LeQuangPhuoc_module6_sprint2/up/back_end",
+    "last_opened_file_path": "E:/codegym/_C0323G1_LeQuangPhuoc_module6_sprint2/up/back_end/not",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -47,6 +89,7 @@
       <option name="presentableId" value="Default" />
       <updated>1698908032593</updated>
       <workItem from="1698908033588" duration="391000" />
+      <workItem from="1699433427150" duration="29000" />
     </task>
     <servers />
   </component>

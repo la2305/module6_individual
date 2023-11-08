@@ -12,6 +12,12 @@ java {
 	sourceCompatibility = '1.8'
 }
 
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
 repositories {
 	mavenCentral()
 }
@@ -30,6 +36,7 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+
 }
 
 tasks.named('test') {

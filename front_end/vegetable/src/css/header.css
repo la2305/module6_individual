@@ -166,3 +166,7 @@
 .ftco-navbar-light.scrolled .nav-item.cta.cta-colored span {
   border-color: #82ae46;
 }
+.user-img{
+  height: 20px;
+  width: 20px;
+}

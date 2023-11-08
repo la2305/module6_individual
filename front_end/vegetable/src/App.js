@@ -8,14 +8,16 @@ import HomePage from "./component/HomePage";
 import { useLocation } from 'react-router-dom';
 import DetailProduct from "./component/DetailProduct";
 import Cart from "./component/Cart";
+import Register from "./component/Register";
 
 
 function App() {
-  const showHeaderFooter = useLocation().pathname !== "/login";
+  const location = useLocation();
+  const noShowHeaderFooter = location.pathname !== '/login' && location.pathname !== '/register';
 
   return (
     <>
-      {showHeaderFooter && (
+      {noShowHeaderFooter && (
         <>
           <Header></Header>
         </>
@@ -26,9 +28,10 @@ function App() {
         <Route path="/detailproduct" element={<DetailProduct></DetailProduct>}></Route>
         <Route path="/" element={<HomePage></HomePage>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
+        <Route path="/register" element={<Register></Register>}></Route>
       </Routes>
 
-      {showHeaderFooter && (
+      {noShowHeaderFooter && (
         <>
           <Footer></Footer>
         </>
