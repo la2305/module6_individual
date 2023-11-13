@@ -1,3 +1,4 @@
+import "../css/footer.css"
 const Footer = () => {
   return (
     <>
@@ -53,7 +54,7 @@ const Footer = () => {
                     {/* Grid column */}
                     <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                       {/* Content */}
-                      <h6 className="text-uppercase fw-bold">Company name</h6>
+                      <h6 className="text-uppercase fw-bold">Eating Well</h6>
                       <hr
                         className="mb-4 mt-0 d-inline-block mx-auto"
                         style={{
@@ -63,16 +64,14 @@ const Footer = () => {
                         }}
                       />
                       <p>
-                        Here you can use rows and columns to organize your
-                        footer content. Lorem ipsum dolor sit amet, consectetur
-                        adipisicing elit.
+                      Our company, with 15 years of experience in the field of providing clean food, will always bring you the best experience. Guess where in this world you can find something better than us?
                       </p>
                     </div>
                     {/* Grid column */}
                     {/* Grid column */}
                     <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                       {/* Links */}
-                      <h6 className="text-uppercase fw-bold">Products</h6>
+                      <h6 className="text-uppercase fw-bold">Suppliers</h6>
                       <hr
                         className="mb-4 mt-0 d-inline-block mx-auto"
                         style={{
@@ -82,23 +81,23 @@ const Footer = () => {
                         }}
                       />
                       <p>
-                        <a href="#!" className="text-dark">
-                          MDBootstrap
+                        <a  className="a text-dark">
+                          MDFruits
                         </a>
                       </p>
                       <p>
-                        <a href="#!" className="text-dark">
-                          MDWordPress
+                        <a className="a text-dark">
+                          Nature Journal
                         </a>
                       </p>
                       <p>
-                        <a href="#!" className="text-dark">
-                          BrandFlow
+                        <a  className="a text-dark">
+                          Fruit Logistica
                         </a>
                       </p>
                       <p>
-                        <a href="#!" className="text-dark">
-                          Bootstrap Angular
+                        <a className="a text-dark">
+                        MTFruits 
                         </a>
                       </p>
                     </div>
@@ -116,22 +115,22 @@ const Footer = () => {
                         }}
                       />
                       <p>
-                        <a href="#!" className="text-dark">
+                        <a  className="a text-dark">
                           Your Account
                         </a>
                       </p>
                       <p>
-                        <a href="#!" className="text-dark">
+                        <a className="a text-dark">
                           Become an Affiliate
                         </a>
                       </p>
                       <p>
-                        <a href="#!" className="text-dark">
+                        <a  className="a text-dark">
                           Shipping Rates
                         </a>
                       </p>
                       <p>
-                        <a href="#!" className="text-dark">
+                        <a className="a text-dark">
                           Help
                         </a>
                       </p>
@@ -150,14 +149,13 @@ const Footer = () => {
                         }}
                       />
                       <p>
-                        <i className="fas fa-home mr-3" /> New York, NY 10012,
-                        US
+                        <i className="fas fa-home mr-3" /> 536/17A Điện Biên Phủ, Thanh Khê, Đà Nẵng
                       </p>
                       <p>
-                        <i className="fas fa-envelope mr-3" /> info@example.com
+                        <i className="fas fa-envelope mr-3" /> lequangphuoc2305@gmail.com
                       </p>
                       <p>
-                        <i className="fas fa-phone mr-3" /> + 01 234 567 88
+                        <i className="fas fa-phone mr-3" /> + 84338210411
                       </p>
                       <p>
                         <i className="fas fa-print mr-3" /> + 01 234 567 89
@@ -174,9 +172,9 @@ const Footer = () => {
                 className="text-center p-3"
                 style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
               >
-                © 2020 Copyright:
-                <a className="text-dark" href="https://mdbootstrap.com/">
-                  MDBootstrap.com
+                Copyright belongs to:  
+                <a className="a text-dark" href="https://mdbootstrap.com/">
+                 LaIT
                 </a>
               </div>
               {/* Copyright */}

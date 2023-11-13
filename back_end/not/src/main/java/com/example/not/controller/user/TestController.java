@@ -1,6 +1,6 @@
 package com.example.not.controller.user;
 
-import com.example.not.model.entity.ERole;
+import com.example.not.model.user.ERole;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

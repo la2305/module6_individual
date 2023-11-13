@@ -2,7 +2,7 @@ import "../css/header.css";
 import swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getUserByJwtToken } from "../service/UserService";
+import { getUserByJwtToken } from "../service/user/UserService";
 
 const Header = () => {
   const [JwtToken, setJwtToken] = useState(localStorage.getItem("JWT"));
@@ -46,7 +46,7 @@ const Header = () => {
                     <span className="icon-phone2" />
                   </div>
                   <span className="text-white">
-                    <i class="fa-solid fa-phone fa-xs"></i> + 1235 2355 98
+                    <i class="fa-solid fa-phone fa-xs"></i> +84338210411
                   </span>
                 </div>
                 <div className="col-md pr-4 d-flex topper align-items-center">
@@ -55,7 +55,7 @@ const Header = () => {
                   </div>
                   <span className="text-white">
                     <i class="fa-regular fa-paper-plane fa-xs "></i>{" "}
-                    youremail@email.com
+                    lequangphuoc2305@email.com
                   </span>
                 </div>
                 <div className="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
@@ -75,9 +75,10 @@ const Header = () => {
             id="ftco-navbar"
           >
             <div className="col-md">
-              <a className="navbar-brand" href="index.html">
-                Vegefoods
-              </a>
+            <img className="logo" src="https://png.pngtree.com/png-vector/20191018/ourmid/pngtree-tree-logo-design-png-image_1824170.jpg"/>
+                <Link className="navbar-brand" to={"/"}>
+                Eating Well
+                </Link>
               <button
                 className="navbar-toggler"
                 type="button"
@@ -171,12 +172,12 @@ const Header = () => {
                               className="user-info text-dark"
                               onClick={() => handleLogOut()}
                             >
-                              {userName} Đăng xuất
+                              {userName} Logout
                             </Link>
                           </>
                         ) : (
                           <Link to={`/login`} className="user-info text-dark">
-                            Đăng nhập
+                            Login
                           </Link>
                         )}
                       </a>

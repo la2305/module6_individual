@@ -1230,5 +1230,15 @@ a.mobile-show.search-bar-icon:hover {
   margin-right: 10px;
   display: inline-block;
 }
-
+.image-description{
+  height: 300px;
+}
 /* /* ----------------------------------------------------------------------------- */
+
+/* css của carousel hompage */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%);
+}
+/* css của carousel hompage */
+

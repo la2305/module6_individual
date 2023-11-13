@@ -1,4 +1,4 @@
-package com.example.not.payload.response;
+package com.example.not.IProjection.payload.response;
 
 import java.util.List;
 

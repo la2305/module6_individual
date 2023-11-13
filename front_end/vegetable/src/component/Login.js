@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../css/login.css";
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import { loginAccount } from "../service/UserService";
+import { loginAccount } from "../service/user/UserService";
 import swal from "sweetalert2";
 
 const Login = () => {

@@ -2,16 +2,18 @@ import "../css/homapage.css";
 const HomePage = () => {
   return (
     <>
-
-
       {/* shop banner */}
-      <section className="shop-banner"  style={{
-          backgroundImage: 'url(https://img.freepik.com/free-photo/top-view-delicious-fruits-with-copy-space_23-2148501490.jpg?size=626&ext=jpg&ga=GA1.1.386372595.1698537600&semt=ais)',
-          width: '100%',
-          height: '400px',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}>
+      <section
+        className="shop-banner"
+        style={{
+          backgroundImage:
+            "url(https://www.ugaoo.com/cdn/shop/articles/feature.jpg?v=1661867782&width=1100)",
+          width: "100%",
+          height: "400px",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="container">
           <h3>
             December sale is on! <br /> with big{" "}
@@ -30,8 +32,6 @@ const HomePage = () => {
       </section>
       {/* end shop banner */}
 
-            
-
       {/* product section */}
       <div className="product-section mt-150 mb-150">
         <div className="container">
@@ -48,68 +48,246 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col-lg-4 col-md-6 text-center">
-              <div className="single-product-item">
-                <div className="product-image">
-                  <a href="single-product.html">
-                    <img
-                      src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-1.jpg"
-                      alt=""
-                    />
-                  </a>
+        </div>
+      </div>
+      {/* end product section */}
+
+      {/* Carousel */}
+      <div id="carouselExampleIndicators" className="carousel slide">
+        <div className="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to={0}
+            className="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          />
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to={1}
+            aria-label="Slide 2"
+          />
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to={2}
+            aria-label="Slide 3"
+          />
+        </div>
+        <div className="carousel-inner">
+          <div className="carousel-item active">
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-4 col-md-6 text-center">
+                  <div className="single-product-item">
+                    <div className="product-image">
+                      <a href="single-product.html">
+                        <img
+                          src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-1.jpg"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <h3>Strawberry</h3>
+                    <p className="product-price">
+                      <span>Per Kg</span> 85${" "}
+                    </p>
+                    <a href="cart.html" className="cart-btn">
+                      <i className="fas fa-shopping-cart" /> Add to Cart
+                    </a>
+                  </div>
                 </div>
-                <h3>Strawberry</h3>
-                <p className="product-price">
-                  <span>Per Kg</span> 85${" "}
-                </p>
-                <a href="cart.html" className="cart-btn">
-                  <i className="fas fa-shopping-cart" /> Add to Cart
-                </a>
+                <div className="col-lg-4 col-md-6 text-center">
+                  <div className="single-product-item">
+                    <div className="product-image">
+                      <a href="single-product.html">
+                        <img
+                          src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-2.jpg"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <h3>Berry</h3>
+                    <p className="product-price">
+                      <span>Per Kg</span> 70${" "}
+                    </p>
+                    <a href="cart.html" className="cart-btn">
+                      <i className="fas fa-shopping-cart" /> Add to Cart
+                    </a>
+                  </div>
+                </div>
+                <div className="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
+                  <div className="single-product-item">
+                    <div className="product-image">
+                      <a href="single-product.html">
+                        <img
+                          src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-3.jpg"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <h3>Lemon</h3>
+                    <p className="product-price">
+                      <span>Per Kg</span> 35${" "}
+                    </p>
+                    <a href="cart.html" className="cart-btn">
+                      <i className="fas fa-shopping-cart" /> Add to Cart
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 text-center">
-              <div className="single-product-item">
-                <div className="product-image">
-                  <a href="single-product.html">
-                    <img
-                      src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-2.jpg"
-                      alt=""
-                    />
-                  </a>
+          </div>
+          <div className="carousel-item">
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-4 col-md-6 text-center">
+                  <div className="single-product-item">
+                    <div className="product-image">
+                      <a href="single-product.html">
+                        <img
+                          src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-1.jpg"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <h3>Strawberry</h3>
+                    <p className="product-price">
+                      <span>Per Kg</span> 85${" "}
+                    </p>
+                    <a href="cart.html" className="cart-btn">
+                      <i className="fas fa-shopping-cart" /> Add to Cart
+                    </a>
+                  </div>
                 </div>
-                <h3>Berry</h3>
-                <p className="product-price">
-                  <span>Per Kg</span> 70${" "}
-                </p>
-                <a href="cart.html" className="cart-btn">
-                  <i className="fas fa-shopping-cart" /> Add to Cart
-                </a>
+                <div className="col-lg-4 col-md-6 text-center">
+                  <div className="single-product-item">
+                    <div className="product-image">
+                      <a href="single-product.html">
+                        <img
+                          src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-2.jpg"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <h3>Berry</h3>
+                    <p className="product-price">
+                      <span>Per Kg</span> 70${" "}
+                    </p>
+                    <a href="cart.html" className="cart-btn">
+                      <i className="fas fa-shopping-cart" /> Add to Cart
+                    </a>
+                  </div>
+                </div>
+                <div className="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
+                  <div className="single-product-item">
+                    <div className="product-image">
+                      <a href="single-product.html">
+                        <img
+                          src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-3.jpg"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <h3>Lemon</h3>
+                    <p className="product-price">
+                      <span>Per Kg</span> 35${" "}
+                    </p>
+                    <a href="cart.html" className="cart-btn">
+                      <i className="fas fa-shopping-cart" /> Add to Cart
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-              <div className="single-product-item">
-                <div className="product-image">
-                  <a href="single-product.html">
-                    <img
-                      src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-3.jpg"
-                      alt=""
-                    />
-                  </a>
+          </div>
+          <div className="carousel-item">
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-4 col-md-6 text-center">
+                  <div className="single-product-item">
+                    <div className="product-image">
+                      <a href="single-product.html">
+                        <img
+                          src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-1.jpg"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <h3>Strawberry</h3>
+                    <p className="product-price">
+                      <span>Per Kg</span> 85${" "}
+                    </p>
+                    <a href="cart.html" className="cart-btn">
+                      <i className="fas fa-shopping-cart" /> Add to Cart
+                    </a>
+                  </div>
                 </div>
-                <h3>Lemon</h3>
-                <p className="product-price">
-                  <span>Per Kg</span> 35${" "}
-                </p>
-                <a href="cart.html" className="cart-btn">
-                  <i className="fas fa-shopping-cart" /> Add to Cart
-                </a>
+                <div className="col-lg-4 col-md-6 text-center">
+                  <div className="single-product-item">
+                    <div className="product-image">
+                      <a href="single-product.html">
+                        <img
+                          src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-2.jpg"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <h3>Berry</h3>
+                    <p className="product-price">
+                      <span>Per Kg</span> 70${" "}
+                    </p>
+                    <a href="cart.html" className="cart-btn">
+                      <i className="fas fa-shopping-cart" /> Add to Cart
+                    </a>
+                  </div>
+                </div>
+                <div className="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
+                  <div className="single-product-item">
+                    <div className="product-image">
+                      <a href="single-product.html">
+                        <img
+                          src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-3.jpg"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <h3>Lemon</h3>
+                    <p className="product-price">
+                      <span>Per Kg</span> 35${" "}
+                    </p>
+                    <a href="cart.html" className="cart-btn">
+                      <i className="fas fa-shopping-cart" /> Add to Cart
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <button
+          className="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
+          <span className="carousel-control-prev-icon" aria-hidden="true" />
+          <span className="visually-hidden">Previous</span>
+        </button>
+        <button
+          className="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
+          <span className="carousel-control-next-icon" aria-hidden="true" />
+          <span className="visually-hidden">Next</span>
+        </button>
       </div>
-      {/* end product section */}
+
+      {/* Carousel */}
 
       {/* <!-- features list section --> */}
       <div
@@ -184,9 +362,7 @@ const HomePage = () => {
               </h3>
               <h4>Hikan Strwaberry</h4>
               <div className="text">
-                Quisquam minus maiores repudiandae nobis, minima saepe id, fugit
-                ullam similique! Beatae, minima quisquam molestias facere ea.
-                Perspiciatis unde omnis iste natus error sit voluptatem accusant
+              Our guavas are grown in the arctic, where the mountains are covered with snow all year round. There's nothing better than enjoying it
               </div>
               {/*Countdown Timer*/}
               <div className="time-counter">
@@ -225,45 +401,7 @@ const HomePage = () => {
       </section>
       {/* end cart banner section */}
 
-      {/* advertisement section */}
-      <div className="abt-section mb-150">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-6 col-md-12">
-              <div className="abt-bg">
-                <img
-                  className="w-75 h-75"
-                  src="https://toquoc.mediacdn.vn/280518851207290880/2023/8/3/trung-thu-3-1691047780336994522889.png"
-                  alt="Mô tả hình ảnh"
-                ></img>
-              </div>
-            </div>
-            <div className="col-lg-6 col-md-12">
-              <div className="abt-text">
-                <p className="top-sub">Since Year 1999</p>
-                <h2>
-                  We are <span className="orange-text">Fruitkha</span>
-                </h2>
-                <p>
-                  Etiam vulputate ut augue vel sodales. In sollicitudin neque et
-                  massa porttitor vestibulum ac vel nisi. Vestibulum placerat
-                  eget dolor sit amet posuere. In ut dolor aliquet, aliquet
-                  sapien sed, interdum velit. Nam eu molestie lorem.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Sapiente facilis illo repellat veritatis minus, et labore
-                  minima mollitia qui ducimus.
-                </p>
-                <a href="about.html" className="boxed-btn mt-4">
-                  know more
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* end advertisement section */}
+      
 
       {/* latest news */}
       <div className="latest-news pt-150 pb-150">
@@ -275,8 +413,7 @@ const HomePage = () => {
                   <span className="orange-text">Our</span> News
                 </h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Aliquid, fuga quas itaque eveniet beatae optio.
+                Eating well not only cares about the health of your life but also cares about spiritual factors.
                 </p>
               </div>
             </div>
@@ -288,12 +425,12 @@ const HomePage = () => {
                   <div className="latest-news-bg news-bg-1" />
                 </a>
                 <img
-                  className="h-75 w-100"
+                  className="image-description w-100"
                   src="https://c.pxhere.com/photos/e1/0e/strawberry_fruit_red_fruits_sweet_food_summer_strawberry_plant-604592.jpg!s2"
                 ></img>
                 <div className="news-text-box">
                   <h3>
-                    <a href="single-news.html">
+                    <a>
                       You will vainly look for fruit on it in autumn.
                     </a>
                   </h3>
@@ -302,51 +439,12 @@ const HomePage = () => {
                       <i className="fas fa-user" /> Admin
                     </span>
                     <span className="date">
-                      <i className="fas fa-calendar" /> 27 December, 2019
+                      <i className="fas fa-calendar" /> 24 October, 2022
                     </span>
                   </p>
                   <p className="excerpt">
-                    Vivamus lacus enim, pulvinar vel nulla sed, scelerisque
-                    rhoncus nisi. Praesent vitae mattis nunc, egestas viverra
-                    eros.
+                  In the crisp days of autumn, you'll search in vain for the bountiful fruit that once adorned its branches.
                   </p>
-                  <a href="single-news.html" className="read-more-btn">
-                    read more <i className="fas fa-angle-right" />
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-4 col-md-6">
-              <div className="single-latest-news">
-                <a href="single-news.html">
-                  <div className="latest-news-bg news-bg-2" />
-                </a>
-                <img
-                  className="h-75 w-100"
-                  src="https://cdn.britannica.com/06/186306-050-93C41044/blackberries-blackberry-fruit-aggregate-drupelets-flower-carpels.jpg"
-                ></img>
-                <div className="news-text-box">
-                  <h3>
-                    <a href="single-news.html">
-                      A man's worth has its season, like tomato.
-                    </a>
-                  </h3>
-                  <p className="blog-meta">
-                    <span className="author">
-                      <i className="fas fa-user" /> Admin
-                    </span>
-                    <span className="date">
-                      <i className="fas fa-calendar" /> 27 December, 2019
-                    </span>
-                  </p>
-                  <p className="excerpt">
-                    Vivamus lacus enim, pulvinar vel nulla sed, scelerisque
-                    rhoncus nisi. Praesent vitae mattis nunc, egestas viverra
-                    eros.
-                  </p>
-                  <a href="single-news.html" className="read-more-btn">
-                    read more <i className="fas fa-angle-right" />
-                  </a>
                 </div>
               </div>
             </div>
@@ -356,12 +454,12 @@ const HomePage = () => {
                   <div className="latest-news-bg news-bg-3" />
                 </a>
                 <img
-                  className="h-75 w-100"
+                  className="image-description w-100"
                   src="https://png.pngtree.com/thumb_back/fw800/background/20220226/pngtree-papaya-fruit-on-the-tree-in-garden-tropical-color-fruit-photo-image_35481134.jpg"
                 ></img>
                 <div className="news-text-box">
                   <h3>
-                    <a href="single-news.html">
+                    <a>
                       Good thoughts bear good fresh juicy fruit.
                     </a>
                   </h3>
@@ -370,17 +468,41 @@ const HomePage = () => {
                       <i className="fas fa-user" /> Admin
                     </span>
                     <span className="date">
-                      <i className="fas fa-calendar" /> 27 December, 2019
+                      <i className="fas fa-calendar" /> 07 November, 2022
                     </span>
                   </p>
                   <p className="excerpt">
-                    Vivamus lacus enim, pulvinar vel nulla sed, scelerisque
-                    rhoncus nisi. Praesent vitae mattis nunc, egestas viverra
-                    eros.
+                  Just as a well-tended orchard yields a bountiful harvest, a mind filled with good thoughts produces a life rich in joy.
                   </p>
-                  <a href="single-news.html" className="read-more-btn">
-                    read more <i className="fas fa-angle-right" />
-                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-4 col-md-6">
+              <div className="single-latest-news">
+                <a href="single-news.html">
+                  <div className="latest-news-bg news-bg-2" />
+                </a>
+                <img
+                  className="image-description w-100"
+                  src="https://www.thespruce.com/thmb/W2lWirI5TbUIM5LxC4hPSzudAv8=/1024x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1200140202-dd9f2c40edc14d338f9bac20471369ba.jpg"
+                ></img>
+                <div className="news-text-box">
+                  <h3>
+                    <a>
+                      A man's worth has its season, like tomato.
+                    </a>
+                  </h3>
+                  <p className="blog-meta">
+                    <span className="author">
+                      <i className="fas fa-user" /> Admin
+                    </span>
+                    <span className="date">
+                      <i className="fas fa-calendar" /> 27 December, 2023
+                    </span>
+                  </p>
+                  <p className="excerpt">
+                    Just like a tomato, a man's worth ripens with time and patience, reaching its peak in the right season of his life.
+                  </p>
                 </div>
               </div>
             </div>

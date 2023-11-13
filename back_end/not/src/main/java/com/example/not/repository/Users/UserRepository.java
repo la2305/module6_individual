@@ -1,6 +1,6 @@
 package com.example.not.repository.Users;
 
-import com.example.not.model.entity.Users;
+import com.example.not.model.user.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

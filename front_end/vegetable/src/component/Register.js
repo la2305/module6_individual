@@ -1,7 +1,7 @@
 import { Field, Form, Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import { registerAccount } from "../service/UserService";
+import { registerAccount } from "../service/user/UserService";
 import swal from "sweetalert2";
 import { useEffect } from "react";
 

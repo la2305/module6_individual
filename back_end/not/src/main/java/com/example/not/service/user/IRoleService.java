@@ -1,7 +1,7 @@
 package com.example.not.service.user;
 
-import com.example.not.model.entity.ERole;
-import com.example.not.model.entity.Roles;
+import com.example.not.model.user.ERole;
+import com.example.not.model.user.Roles;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package com.example.not.payload.request;
+package com.example.not.IProjection.payload.request;
 
 public class LoginRequest {
     private String userName;

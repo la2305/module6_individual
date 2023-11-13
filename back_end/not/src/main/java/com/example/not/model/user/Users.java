@@ -1,4 +1,4 @@
-package com.example.not.model.entity;
+package com.example.not.model.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

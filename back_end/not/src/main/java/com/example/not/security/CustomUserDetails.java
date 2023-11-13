@@ -1,5 +1,5 @@
 package com.example.not.security;
-import com.example.not.model.entity.Users;
+import com.example.not.model.user.Users;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;

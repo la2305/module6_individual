@@ -9,6 +9,7 @@ import { useLocation } from 'react-router-dom';
 import DetailProduct from "./component/DetailProduct";
 import Cart from "./component/Cart";
 import Register from "./component/Register";
+import Shop from "./component/Shop";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/" element={<HomePage></HomePage>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
+        <Route path="/shop" element={<Shop></Shop>}></Route>
       </Routes>
 
       {noShowHeaderFooter && (

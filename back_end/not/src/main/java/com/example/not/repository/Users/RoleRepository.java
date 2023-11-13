@@ -1,7 +1,7 @@
 package com.example.not.repository.Users;
 
-import com.example.not.model.entity.ERole;
-import com.example.not.model.entity.Roles;
+import com.example.not.model.user.ERole;
+import com.example.not.model.user.Roles;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

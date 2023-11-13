@@ -1,6 +1,6 @@
 package com.example.not.security;
 
-import com.example.not.model.entity.Users;
+import com.example.not.model.user.Users;
 import com.example.not.repository.Users.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
