@@ -6,4 +6,5 @@ import org.springframework.data.domain.Pageable;
 
 public interface IProductService {
     Page<IProductProjection> findAllProductBy(Pageable pageable, String searchType);
+    IProductProjection findProductByProductId(int productId);
 }

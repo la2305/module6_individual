@@ -1,4 +1,4 @@
-package com.example.not.repository.Product;
+package com.example.not.repository.product;
 import com.example.not.model.product.Type;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -1,4 +1,4 @@
-package com.example.not.repository.Product;
+package com.example.not.repository.product;
 
 import com.example.not.IProjection.product.IProductProjection;
 import com.example.not.model.product.Product;
@@ -18,4 +18,11 @@ public interface IProductRepository extends JpaRepository<Product,Long> {
             " LEFT JOIN image AS i2 ON i2.product_id = image.product_id AND i2.image_id < image.image_id " +
             " WHERE i2.image_id IS NULL and type.name like :searchType ")
     Page<IProductProjection> findAllProductBy(Pageable pageable, @Param("searchType") String searchType);
+
+    @Query(nativeQuery = true,value = " SELECT product.product_id as productId, product.name as productName, product.price as productPrice, image.image_address as imageAddress, product.description as description" +
+            " FROM product " +
+            " LEFT JOIN image ON image.product_id = product.product_id " +
+            " LEFT JOIN image AS i2 ON i2.product_id = image.product_id AND i2.image_id < image.image_id " +
+            " WHERE i2.image_id IS NULL and product.product_id = :productId ")
+    IProductProjection findProductByProductId(int productId);
 }

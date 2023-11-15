@@ -1,7 +1,7 @@
 package com.example.not.service.user;
 
 import com.example.not.model.user.Users;
-import com.example.not.repository.Users.UserRepository;
+import com.example.not.repository.users.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ public class UserService implements IUserService{
 
     }
     @Autowired
-    private UserRepository userRepository;
+    private IUserRepository userRepository;
     @Override
     public Users findByUserName(String userName) {
         return userRepository.findByUserName(userName);

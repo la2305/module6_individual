@@ -3,6 +3,7 @@ import { getProductList } from "../service/product/ProductService";
 import { useEffect } from "react";
 import "../css/shop.css";
 import { getProductTypeList } from "../service/product/ProductTypeService";
+import { Link } from "react-router-dom";
 
 const Shop = () => {
   const [productList, setProductList] = useState([]);
@@ -101,13 +102,13 @@ const Shop = () => {
               <div className="col-lg-4 col-md-6 text-center strawberry">
                 <div className="single-product-item">
                   <div className="product-image">
-                    <a href="single-product.html">
+                    <Link to={`/product-detail/${product.productId}`}>
                       <img src={product.imageAddress} />
-                    </a>
+                    </Link>
                   </div>
                   <h3>{product.productName}</h3>
                   <p className="product-price">
-                    {product.productPrice.toLocaleString("vi-VN")} VND
+                    {product.productPrice.toLocaleString("vi-VN") } VND
                   </p>
                   <a href="cart.html" className="cart-btn">
                     <i className="fas fa-shopping-cart" /> Add to Cart

@@ -1,6 +1,6 @@
 package com.example.not.service.product;
 import com.example.not.model.product.Type;
-import com.example.not.repository.Product.IProductTypeRepository;
+import com.example.not.repository.product.IProductTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

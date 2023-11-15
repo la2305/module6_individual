@@ -146,10 +146,10 @@ const Header = () => {
                     </a>
                   </li>
                   <li className="nav-item cta cta-colored">
-                    <a href="cart.html" className="nav-link">
+                    <Link to={"/cart"} className="nav-link">
                       <i class="fa-solid fa-cart-shopping"></i>
                       [0]
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
                     <div className="nav-link">

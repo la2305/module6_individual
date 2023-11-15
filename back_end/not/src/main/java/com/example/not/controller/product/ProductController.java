@@ -37,4 +37,9 @@ public class ProductController {
         }
         return new ResponseEntity<>(productProjectionPage, HttpStatus.OK);
     }
+    @GetMapping("/product-detail")
+    public ResponseEntity<IProductProjection> findProductByProductId(@RequestParam("productId") int productId){
+        IProductProjection iProductProjection = iProductService.findProductByProductId(productId);
+        return new ResponseEntity<>(iProductProjection,HttpStatus.OK);
+    }
 }

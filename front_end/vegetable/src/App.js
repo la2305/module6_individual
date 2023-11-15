@@ -6,10 +6,11 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./component/Header";
 import HomePage from "./component/HomePage";
 import { useLocation } from 'react-router-dom';
-import DetailProduct from "./component/DetailProduct";
+import DetailProduct from "./component/ProductDetail";
 import Cart from "./component/Cart";
 import Register from "./component/Register";
 import Shop from "./component/Shop";
+import ProductDetail from "./component/ProductDetail";
 
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
 
       <Routes>
         <Route path="/cart" element={<Cart></Cart>}></Route>
-        <Route path="/detailproduct" element={<DetailProduct></DetailProduct>}></Route>
+        <Route path="/product-Detail/:id" element={<ProductDetail></ProductDetail>}></Route>
         <Route path="/" element={<HomePage></HomePage>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>

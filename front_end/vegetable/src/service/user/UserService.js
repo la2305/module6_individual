@@ -18,8 +18,7 @@ export const loginAccount = async (account) =>{
 }
 
 export const getUserByJwtToken = () => {
-    const jwtToken = localStorage.getItem("JWT");
-
+        const jwtToken = localStorage.getItem("JWT");
     if (jwtToken != null) {
         const decodedToken = jwtDecode(jwtToken);
         return decodedToken;

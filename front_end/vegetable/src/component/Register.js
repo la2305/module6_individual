@@ -8,7 +8,6 @@ import { useEffect } from "react";
 const Register = () => {
   const navigate = useNavigate();
   useEffect(() => {
-    console.log("alosdf");
   }, []);
 
   const handleSubmit = async (values) => {

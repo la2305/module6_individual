@@ -1,11 +1,10 @@
-package com.example.not.repository.Users;
-
+package com.example.not.repository.users;
 import com.example.not.model.user.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<Users,Integer> {
+public interface IUserRepository extends JpaRepository<Users,Integer> {
     Users findByUserName(String userName);
     boolean existsByUserName(String userName);
     boolean existsByEmail(String email);

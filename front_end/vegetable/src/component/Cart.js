@@ -1,4 +1,23 @@
+import { useEffect, useState } from "react";
+import { getUserByJwtToken } from "../service/user/UserService";
+import { deleteCartByCartId, getAllCartByUserName } from "../service/cart/CartService";
+
 const Cart = () => {
+  const [listCart,setListCart] = useState([]);
+  const loadListCart = async () =>{
+    const userName = getUserByJwtToken();
+    const data = await getAllCartByUserName(userName.sub);
+    setListCart(data);
+  }
+  const clickDeleteCartByCartId = async (productId,userId) =>{
+    console.log(productId,userId);
+    await deleteCartByCartId(productId,userId);
+    loadListCart();
+  }
+  useEffect(()=>{
+    loadListCart();
+  },[])
+
   return (
     <>
       <>
@@ -12,71 +31,35 @@ const Cart = () => {
                     <thead className="cart-table-head">
                       <tr className="table-head-row">
                         <th className="product-remove" />
-                        <th className="product-image">Product Image</th>
-                        <th className="product-name">Name</th>
-                        <th className="product-price">Price</th>
-                        <th className="product-quantity">Quantity</th>
-                        <th className="product-total">Total</th>
+                        <th className="product-image">Hình ảnh</th>
+                        <th className="product-name">Tên</th>
+                        <th className="product-quantity">Số lượng</th>
+                        <th className="product-total">Cân Nặng</th>
+                        <th className="product-price">Giá</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr className="table-body-row">
+                      {listCart.map((cart)=>(
+                        <tr className="table-body-row">
                         <td className="product-remove">
-                          <a href="#">
-                            <i className="far fa-window-close" />
-                          </a>
+                          <span onClick={() =>clickDeleteCartByCartId(cart.productId,cart.userId)}>
+                            <div className="far fa-window-close" />
+                          </span>
                         </td>
                         <td className="product-image">
                           <img
-                            src="assets/img/products/product-img-1.jpg"
+                            src={cart.imageAddress}
                             alt=""
                           />
                         </td>
-                        <td className="product-name">Strawberry</td>
-                        <td className="product-price">$85</td>
+                        <td className="product-name">{cart.productName}</td>
                         <td className="product-quantity">
-                          <input type="number" placeholder={0} />
+                          <input type="number" value={cart.quantityProductOrder} />
                         </td>
-                        <td className="product-total">1</td>
+                        <td className="product-total">{cart.quantityProductOrder}</td>
+                        <td className="product-price">{cart.productPrice.toLocaleString("vi-VN")}VND</td>
                       </tr>
-                      <tr className="table-body-row">
-                        <td className="product-remove">
-                          <a href="#">
-                            <i className="far fa-window-close" />
-                          </a>
-                        </td>
-                        <td className="product-image">
-                          <img
-                            src="assets/img/products/product-img-2.jpg"
-                            alt=""
-                          />
-                        </td>
-                        <td className="product-name">Berry</td>
-                        <td className="product-price">$70</td>
-                        <td className="product-quantity">
-                          <input type="number" placeholder={0} />
-                        </td>
-                        <td className="product-total">1</td>
-                      </tr>
-                      <tr className="table-body-row">
-                        <td className="product-remove">
-                          <a href="#">
-                            <i className="far fa-window-close" />
-                          </a>
-                        </td>
-                        <td className="product-image">
-                          <img
-                            src="assets/img/products/product-img-3.jpg"
-                            alt=""
-                          />
-                        </td>
-                        <td className="product-name">Lemon</td>
-                        <td className="product-price">$35</td>
-                        <td className="product-quantity">
-                          <input type="number" placeholder={0} />
-                        </td>
-                        <td className="product-total">1</td>
-                      </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>
@@ -86,26 +69,26 @@ const Cart = () => {
                   <table className="total-table">
                     <thead className="total-table-head">
                       <tr className="table-total-row">
-                        <th>Total</th>
-                        <th>Price</th>
+                        <th>Tổng</th>
+                        <th>Giá</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr className="total-data">
                         <td>
-                          <strong>Subtotal: </strong>
+                          <strong>Tổng tiền sản phẩm: </strong>
                         </td>
                         <td>$500</td>
                       </tr>
                       <tr className="total-data">
                         <td>
-                          <strong>Shipping: </strong>
+                          <strong>Phí giao hàng: </strong>
                         </td>
-                        <td>$45</td>
+                        <td>0 VND</td>
                       </tr>
                       <tr className="total-data">
                         <td>
-                          <strong>Total: </strong>
+                          <strong>Thành tiền: </strong>
                         </td>
                         <td>$545</td>
                       </tr>
@@ -113,7 +96,7 @@ const Cart = () => {
                   </table>
                   <div className="cart-buttons d-flex justify-content-center">
                     <a href="checkout.html" className="boxed-btn black">
-                      <button className="btn btn-warning">Check Out</button>
+                      <button className="btn btn-warning">Thanh toán</button>
                     </a>
                   </div>
                 </div>

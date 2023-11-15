@@ -1,4 +1,4 @@
-package com.example.not.repository.Users;
+package com.example.not.repository.users;
 
 import com.example.not.model.user.ERole;
 import com.example.not.model.user.Roles;
@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface RoleRepository extends JpaRepository<Roles,Integer> {
+public interface IRoleRepository extends JpaRepository<Roles,Integer> {
     Optional<Roles> findByRoleName(ERole roleName);
 }
