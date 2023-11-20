@@ -11,6 +11,9 @@ import Cart from "./component/Cart";
 import Register from "./component/Register";
 import Shop from "./component/Shop";
 import ProductDetail from "./component/ProductDetail";
+import CheckOut from "./component/CheckOut";
+import SearchProduct from "./component/SearchProduct";
+
 
 
 function App() {
@@ -32,6 +35,8 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/shop" element={<Shop></Shop>}></Route>
+        <Route path="/checkout" element={<CheckOut></CheckOut>}></Route>
+        <Route path="/searchProduct" element={<SearchProduct></SearchProduct>}></Route>
       </Routes>
 
       {noShowHeaderFooter && (

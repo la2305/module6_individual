@@ -105,7 +105,8 @@ const Login = () => {
 
                         <div className="d-flex justify-content-center flex-column">
                           <button
-                            className="btn btn-block btn-primary"
+                            className="btn btn-block"
+                            style={{backgroundColor: "#82AE46"}}
                             type="submit"
                           >
                             Đăng nhập

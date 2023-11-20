@@ -31,4 +31,22 @@
   .orange-text {
     color: #F28123;
   }
+  .quantity-button {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #e5f2ec;
+    color: #82AE46;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+  }
+  .cart-style{
+    background-color: #e5f2ec;
+  }
+
+
+
   

@@ -11,6 +11,7 @@ import com.example.not.security.CustomUserDetails;
 import com.example.not.service.user.RoleService;
 import com.example.not.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,6 +19,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
@@ -106,4 +109,11 @@ public class UserController {
         return ResponseEntity.ok(new JwtResponse(jwt,customUserDetails.getUsername(),customUserDetails.getEmail(),
                 customUserDetails.getPhone(),listRoles));
     }
+
+    @GetMapping("/user")
+    public ResponseEntity<?> getInfoUserByUserName(@RequestParam("userName") String userName){
+        Users users = userService.findByUserName(userName);
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
 }
+

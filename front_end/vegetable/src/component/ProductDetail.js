@@ -10,6 +10,7 @@ import { getUserByJwtToken } from "../service/user/UserService";
 const ProductDetail = () => {
   const [product,setProduct] = useState();
   const params = useParams();
+  const [quantity , setQuantity] = useState(1);
 
   //load sản phẩm
   const loadProduct = async (values) =>{
@@ -25,14 +26,11 @@ const ProductDetail = () => {
     return null;
   }
 
+
   //thêm sản phẩm vào giỏ hàng
   const clickCreateCart = async () =>{
     const quantityProductOrder = document.getElementById("quantityProductOrder").value;
     const userName = getUserByJwtToken();
-    console.log(quantityProductOrder);
-    console.log(product.productId);
-    console.log(userName.sub);
-
     await createCart(quantityProductOrder,product.productId,userName.sub);
     swal.fire({
       icon: "success",
@@ -42,6 +40,20 @@ const ProductDetail = () => {
       timer: 1500,
     });
   } 
+
+  //tăng giảm số lượng sản phẩm
+  const increaseQuantity = () =>{
+    const input = quantity + 1;
+    setQuantity(input);
+  }
+  const decreaseQuantity = () =>{
+    if (quantity ===1) {
+      setQuantity(1);
+    }else{
+      const input = quantity -1;
+      setQuantity(input);
+    }
+  }
 
 
   return (
@@ -69,14 +81,14 @@ const ProductDetail = () => {
                   </p>
                   <div className="single-product-form">
                     <form action="index.html">
-                      <input type="number" id="quantityProductOrder" min="1" placeholder={1}/>
+                      <button type="button" className="quantity-button" onClick={decreaseQuantity}>-</button>
+                      <input className="quantity-input m-2" type="number" id="quantityProductOrder" value={quantity} min="1" onChange={(e) => setQuantity(parseInt(e.target.value))}/>
+                      <button type="button" className="quantity-button" onClick={increaseQuantity}>+</button>
                     </form>
-                    <button className="cart-btn" onClick={()=>clickCreateCart()}>
+                    <button className="cart-btn mt-3 cart-style" onClick={()=>clickCreateCart()}>
                       <i className="fas fa-shopping-cart" /> Thêm vào giỏ
                     </button>
-                    <p>
-                      <strong>Categories: </strong>Fruits, Organic
-                    </p>
+                    
                   </div>
                   <h4>Share:</h4>
                   <ul className="product-share">
@@ -120,11 +132,10 @@ const ProductDetail = () => {
               <div className="col-lg-8 offset-lg-2 text-center">
                 <div className="section-title">
                   <h3>
-                    <span className="orange-text">Related</span> Products
+                    <span className="orange-text">Sản phẩm</span> liên quan
                   </h3>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Aliquid, fuga quas itaque eveniet beatae optio.
+                  Điều quan trọng ở Eating Well là luôn đặt lợi ích của khách hàng lên hàng đầu khách hàng.
                   </p>
                 </div>
               </div>

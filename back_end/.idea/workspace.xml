@@ -5,44 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6061a328-6e03-4dd5-8aed-a88817083f70" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/controller/user/TestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/controller/user/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/jwt/JwtAuthenticationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/jwt/JwtTokenProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/entity/ERole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/entity/Roles.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/entity/Users.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/payload/request/LoginRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/payload/request/SignupRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/payload/response/JwtResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/payload/response/MessageResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/repository/Users/RoleRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/repository/Users/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/security/CustomUserDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/security/CustomUserDetailsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/security/WebSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/service/user/IRoleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/service/user/IUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/service/user/RoleService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/service/user/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/not/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/not/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/oder/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/oder/Carts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/oder/OderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/oder/OderDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/oder/OrderBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/oder/OrderBills.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/product/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/product/Images.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/product/Products.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/product/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/product/Types.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/user/Roles.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/user/Roless.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/user/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/user/UserRoles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/user/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/model/user/Userss.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/not/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front_end/vegetable/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front_end/vegetable/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front_end/vegetable/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/controller/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/controller/user/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/repository/users/IUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/repository/users/IUserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/service/cart/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/service/cart/CartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/service/cart/ICartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/service/cart/ICartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/not/src/main/java/com/example/not/service/user/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/not/src/main/java/com/example/not/service/user/IUserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../front_end/vegetable/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front_end/vegetable/src/component/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/src/component/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front_end/vegetable/src/component/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/src/component/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front_end/vegetable/src/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/src/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/vegetable/src/component/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/src/component/Cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/vegetable/src/component/ProductDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/src/component/ProductDetail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/vegetable/src/component/Shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/src/component/Shop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/vegetable/src/css/homapage.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/src/css/homapage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/vegetable/src/css/productdetail.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/src/css/productdetail.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/vegetable/src/css/shop.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/src/css/shop.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/vegetable/src/service/user/UserService.js" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/vegetable/src/service/user/UserService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,23 +38,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "E:/codegym/_C0323G1_LeQuangPhuoc_module6_sprint2/up/back_end/not",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/codegym/_C0323G1_LeQuangPhuoc_module6_sprint2/up/back_end/not&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -90,6 +65,7 @@
       <updated>1698908032593</updated>
       <workItem from="1698908033588" duration="391000" />
       <workItem from="1699433427150" duration="29000" />
+      <workItem from="1700189515602" duration="52000" />
     </task>
     <servers />
   </component>

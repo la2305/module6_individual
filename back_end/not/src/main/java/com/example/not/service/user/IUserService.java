@@ -7,4 +7,5 @@ public interface IUserService {
     boolean existsByUserName(String userName);
     boolean existsByEmail(String email);
     Users saveOrUpdate(Users user);
+
 }

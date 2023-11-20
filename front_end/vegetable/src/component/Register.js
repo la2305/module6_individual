@@ -100,8 +100,9 @@ const Register = () => {
 
                         <div className="d-flex justify-content-center flex-column">
                           <button
-                            className="btn btn-block btn-primary"
+                            className="btn btn-block"
                             type="submit"
+                            style={{backgroundColor : "#82AE46"}}
                           >
                             Đăng ký
                           </button>

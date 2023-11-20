@@ -19,7 +19,7 @@ const Footer = () => {
               >
                 {/* Left */}
                 <div className="me-5">
-                  <span>Get connected with us on social networks:</span>
+                  <span>Hãy kết nối với chúng tôi trên mạng xã hội:</span>
                 </div>
                 {/* Left */}
                 {/* Right */}
@@ -64,14 +64,13 @@ const Footer = () => {
                         }}
                       />
                       <p>
-                      Our company, with 15 years of experience in the field of providing clean food, will always bring you the best experience. Guess where in this world you can find something better than us?
-                      </p>
+                      Công ty chúng tôi với 15 năm kinh nghiệm trong lĩnh vực cung cấp thực phẩm sạch sẽ luôn mang đến cho bạn những trải nghiệm tốt nhất. Đoán xem nơi nào trên thế giới này bạn có thể tìm thấy thứ gì đó tốt hơn chúng tôi?                      </p>
                     </div>
                     {/* Grid column */}
                     {/* Grid column */}
                     <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                       {/* Links */}
-                      <h6 className="text-uppercase fw-bold">Suppliers</h6>
+                      <h6 className="text-uppercase fw-bold">Nhà cung cấp</h6>
                       <hr
                         className="mb-4 mt-0 d-inline-block mx-auto"
                         style={{
@@ -105,7 +104,7 @@ const Footer = () => {
                     {/* Grid column */}
                     <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                       {/* Links */}
-                      <h6 className="text-uppercase fw-bold">Useful links</h6>
+                      <h6 className="text-uppercase fw-bold">LIÊN KẾT HỮU ÍCH</h6>
                       <hr
                         className="mb-4 mt-0 d-inline-block mx-auto"
                         style={{
@@ -116,22 +115,21 @@ const Footer = () => {
                       />
                       <p>
                         <a  className="a text-dark">
-                          Your Account
+                          Tài khoản của bạn
                         </a>
                       </p>
                       <p>
                         <a className="a text-dark">
-                          Become an Affiliate
-                        </a>
+                        giới thiệu                        </a>
                       </p>
                       <p>
                         <a  className="a text-dark">
-                          Shipping Rates
+                          Chi phí vận chuyển
                         </a>
                       </p>
                       <p>
                         <a className="a text-dark">
-                          Help
+                          Giúp đỡ
                         </a>
                       </p>
                     </div>
@@ -139,7 +137,7 @@ const Footer = () => {
                     {/* Grid column */}
                     <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                       {/* Links */}
-                      <h6 className="text-uppercase fw-bold">Contact</h6>
+                      <h6 className="text-uppercase fw-bold">Liên lạc</h6>
                       <hr
                         className="mb-4 mt-0 d-inline-block mx-auto"
                         style={{
@@ -172,10 +170,8 @@ const Footer = () => {
                 className="text-center p-3"
                 style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
               >
-                Copyright belongs to:  
-                <a className="a text-dark" href="https://mdbootstrap.com/">
-                 LaIT
-                </a>
+                Bản quyền thuộc về:  
+                <a className="a text-dark" href="https://mdbootstrap.com/"> LaIT</a>
               </div>
               {/* Copyright */}
             </footer>

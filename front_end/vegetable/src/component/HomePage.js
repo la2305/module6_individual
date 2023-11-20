@@ -1,5 +1,39 @@
+import { Link } from "react-router-dom";
 import "../css/homapage.css";
+import { useState } from "react";
+import { getProductList } from "../service/product/ProductService";
+import { useEffect } from "react";
+import { getUserByJwtToken } from "../service/user/UserService";
+import { createCart } from "../service/cart/CartService";
+import swal from "sweetalert2";
+
 const HomePage = () => {
+  const [productList, setProductList] = useState([]);
+  const [page, setPage] = useState(0);
+  const [searchType, setSearchType] = useState("");
+  const [sort, setSort] = useState("productId");
+
+  const loadProductList = async () => {
+    const data = await getProductList(page, searchType, sort);
+    setProductList(data.content);
+    console.log(data.content);
+  };
+  useEffect(() => {
+    loadProductList();
+  }, []);
+
+  const clickCreateCart = async (productId) =>{
+    const userName = getUserByJwtToken();
+    await createCart(1,productId,userName.sub);
+    swal.fire({
+      icon: "success",
+      title: "Hoàn tất",
+      text: "Sản phẩm đã được thêm vào giỏ hàng hãy tiến hành thanh toán",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
+
   return (
     <>
       {/* shop banner */}
@@ -15,19 +49,22 @@ const HomePage = () => {
         }}
       >
         <div className="container">
+          <div>
+            <br></br>
+          </div>
           <h3>
-            December sale is on! <br /> with big{" "}
-            <span className="orange-text">Discount...</span>
+            Tháng 11 khuyến <br /> mãi khủng <br></br>
+            {/* <span className="orange-text">Discount...</span> */}
           </h3>
           <div className="sale-percent">
             <span>
-              Sale! <br /> Upto
+              Giảm! <br /> Đến
             </span>
-            50% <span>off</span>
+            50% <span>cửa hàng</span>
           </div>
-          <a href="shop.html" className="cart-btn btn-lg">
-            Shop Now
-          </a>
+          <Link to={"/shop"} className="cart-btn btn-lg">
+            Mua hàng
+          </Link>
         </div>
       </section>
       {/* end shop banner */}
@@ -39,11 +76,11 @@ const HomePage = () => {
             <div className="col-lg-8 offset-lg-2 text-center">
               <div className="section-title">
                 <h3>
-                  <span className="orange-text">Our</span> Products
+                  <span className="orange-text">Sản phẩm</span> mới nhất
                 </h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Aliquid, fuga quas itaque eveniet beatae optio.
+                  Điều quan trọng ở Eating Well là luôn đặt lợi ích của khách
+                  hàng lên hàng đầu khách hàng
                 </p>
               </div>
             </div>
@@ -76,195 +113,55 @@ const HomePage = () => {
             aria-label="Slide 3"
           />
         </div>
+
         <div className="carousel-inner">
-          <div className="carousel-item active">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-4 col-md-6 text-center">
-                  <div className="single-product-item">
-                    <div className="product-image">
-                      <a href="single-product.html">
-                        <img
-                          src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-1.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <h3>Strawberry</h3>
-                    <p className="product-price">
-                      <span>Per Kg</span> 85${" "}
-                    </p>
-                    <a href="cart.html" className="cart-btn">
-                      <i className="fas fa-shopping-cart" /> Add to Cart
-                    </a>
+          <div className="container">
+            {productList
+              .reduce((groups, product, index) => {
+                if (index % 3 === 0) {
+                  groups.push([]);
+                }
+                groups[groups.length - 1].push(product);
+                return groups;
+              }, [])
+              .map((group, groupIndex) => (
+                <div
+                  className={`carousel-item ${
+                    groupIndex === 0 ? "active" : ""
+                  }`}
+                  key={groupIndex}
+                >
+                  <div className="row">
+                    {group.map((product, productIndex) => (
+                      <div
+                        className="col-lg-4 col-md-6 text-center"
+                        key={productIndex}
+                      >
+                        <div className="single-product-item">
+                          <div className="product-image">
+                            <a href="single-product.html">
+                              <img
+                                src={product.imageAddress}
+                                alt={product.productName}
+                              />
+                            </a>
+                          </div>
+                          <h3>{product.productName}</h3>
+                          <p className="product-price">
+                            {product.productPrice.toLocaleString("vi-VN")} VND
+                          </p>
+                          <button
+                            onClick={() => clickCreateCart(product.productId)}
+                            className="cart-btn cart-style"
+                          >
+                            <i className="fas fa-shopping-cart" /> Thêm vào giỏ
+                          </button>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-                <div className="col-lg-4 col-md-6 text-center">
-                  <div className="single-product-item">
-                    <div className="product-image">
-                      <a href="single-product.html">
-                        <img
-                          src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-2.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <h3>Berry</h3>
-                    <p className="product-price">
-                      <span>Per Kg</span> 70${" "}
-                    </p>
-                    <a href="cart.html" className="cart-btn">
-                      <i className="fas fa-shopping-cart" /> Add to Cart
-                    </a>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-                  <div className="single-product-item">
-                    <div className="product-image">
-                      <a href="single-product.html">
-                        <img
-                          src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-3.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <h3>Lemon</h3>
-                    <p className="product-price">
-                      <span>Per Kg</span> 35${" "}
-                    </p>
-                    <a href="cart.html" className="cart-btn">
-                      <i className="fas fa-shopping-cart" /> Add to Cart
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="carousel-item">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-4 col-md-6 text-center">
-                  <div className="single-product-item">
-                    <div className="product-image">
-                      <a href="single-product.html">
-                        <img
-                          src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-1.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <h3>Strawberry</h3>
-                    <p className="product-price">
-                      <span>Per Kg</span> 85${" "}
-                    </p>
-                    <a href="cart.html" className="cart-btn">
-                      <i className="fas fa-shopping-cart" /> Add to Cart
-                    </a>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 text-center">
-                  <div className="single-product-item">
-                    <div className="product-image">
-                      <a href="single-product.html">
-                        <img
-                          src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-2.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <h3>Berry</h3>
-                    <p className="product-price">
-                      <span>Per Kg</span> 70${" "}
-                    </p>
-                    <a href="cart.html" className="cart-btn">
-                      <i className="fas fa-shopping-cart" /> Add to Cart
-                    </a>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-                  <div className="single-product-item">
-                    <div className="product-image">
-                      <a href="single-product.html">
-                        <img
-                          src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-3.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <h3>Lemon</h3>
-                    <p className="product-price">
-                      <span>Per Kg</span> 35${" "}
-                    </p>
-                    <a href="cart.html" className="cart-btn">
-                      <i className="fas fa-shopping-cart" /> Add to Cart
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="carousel-item">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-4 col-md-6 text-center">
-                  <div className="single-product-item">
-                    <div className="product-image">
-                      <a href="single-product.html">
-                        <img
-                          src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-1.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <h3>Strawberry</h3>
-                    <p className="product-price">
-                      <span>Per Kg</span> 85${" "}
-                    </p>
-                    <a href="cart.html" className="cart-btn">
-                      <i className="fas fa-shopping-cart" /> Add to Cart
-                    </a>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 text-center">
-                  <div className="single-product-item">
-                    <div className="product-image">
-                      <a href="single-product.html">
-                        <img
-                          src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-2.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <h3>Berry</h3>
-                    <p className="product-price">
-                      <span>Per Kg</span> 70${" "}
-                    </p>
-                    <a href="cart.html" className="cart-btn">
-                      <i className="fas fa-shopping-cart" /> Add to Cart
-                    </a>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-                  <div className="single-product-item">
-                    <div className="product-image">
-                      <a href="single-product.html">
-                        <img
-                          src="https://themewagon.github.io/fruitkha/assets/img/products/product-img-3.jpg"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <h3>Lemon</h3>
-                    <p className="product-price">
-                      <span>Per Kg</span> 35${" "}
-                    </p>
-                    <a href="cart.html" className="cart-btn">
-                      <i className="fas fa-shopping-cart" /> Add to Cart
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+              ))}
           </div>
         </div>
         <button
@@ -302,8 +199,8 @@ const HomePage = () => {
                   <i class="fas fa-shipping-fast"></i>
                 </div>
                 <div class="content">
-                  <h3>Free Shipping</h3>
-                  <p>When order over $75</p>
+                  <h3>Chi phí vận chuyển</h3>
+                  <p>1 Kg cũng miễn phí ship</p>
                 </div>
               </div>
             </div>
@@ -313,8 +210,8 @@ const HomePage = () => {
                   <i class="fas fa-phone-volume"></i>
                 </div>
                 <div class="content">
-                  <h3>24/7 Support</h3>
-                  <p>Get support all day</p>
+                  <h3>Hổ trợ 24/7</h3>
+                  <p>Hổ trợ khách hàng bất cứ khi nào</p>
                 </div>
               </div>
             </div>
@@ -324,8 +221,8 @@ const HomePage = () => {
                   <i class="fas fa-sync"></i>
                 </div>
                 <div class="content">
-                  <h3>Refund</h3>
-                  <p>Get refund within 3 days!</p>
+                  <h3>Hoàn trả</h3>
+                  <p>Hoàn trả sản phẩm trong vòng 24h!</p>
                 </div>
               </div>
             </div>
@@ -344,7 +241,7 @@ const HomePage = () => {
                 <div className="price-box">
                   <div className="inner-price">
                     <span className="price">
-                      <strong>30%</strong> <br /> off per kg
+                      <strong>30%</strong> <br /> mỗi kg
                     </span>
                   </div>
                 </div>
@@ -358,11 +255,12 @@ const HomePage = () => {
             {/*Content Column*/}
             <div className="content-column col-lg-6">
               <h3>
-                <span className="orange-text">Deal</span> of the month
+                <span className="orange-text">Khuyến mãi</span> của tháng
               </h3>
-              <h4>Hikan Strwaberry</h4>
+              <h4>Ổi canada</h4>
               <div className="text">
-              Our guavas are grown in the arctic, where the mountains are covered with snow all year round. There's nothing better than enjoying it
+                Ổi canada được trồng trên những khu vườn siêu sạch với tiêu
+                chuẩn thế giới sẽ đem đến trãi nghiệm tuyệt vời{" "}
               </div>
               {/*Countdown Timer*/}
               <div className="time-counter">
@@ -372,36 +270,34 @@ const HomePage = () => {
                 >
                   <div className="counter-column">
                     <div className="inner">
-                      <span className="count">00</span>Days
+                      <span className="count">03</span>Ngày
                     </div>
                   </div>{" "}
                   <div className="counter-column">
                     <div className="inner">
-                      <span className="count">00</span>Hours
+                      <span className="count">00</span>Giờ
                     </div>
                   </div>{" "}
                   <div className="counter-column">
                     <div className="inner">
-                      <span className="count">00</span>Mins
+                      <span className="count">00</span>Phút
                     </div>
                   </div>{" "}
                   <div className="counter-column">
                     <div className="inner">
-                      <span className="count">00</span>Secs
+                      <span className="count">00</span>Giây
                     </div>
                   </div>
                 </div>
               </div>
               <a href="cart.html" className="cart-btn mt-3">
-                <i className="fas fa-shopping-cart" /> Add to Cart
+                <i className="fas fa-shopping-cart" /> Thêm vào giỏ
               </a>
             </div>
           </div>
         </div>
       </section>
       {/* end cart banner section */}
-
-      
 
       {/* latest news */}
       <div className="latest-news pt-150 pb-150">
@@ -410,10 +306,11 @@ const HomePage = () => {
             <div className="col-lg-8 offset-lg-2 text-center">
               <div className="section-title">
                 <h3>
-                  <span className="orange-text">Our</span> News
+                  <span className="orange-text">Tin</span> Mới
                 </h3>
                 <p>
-                Eating well not only cares about the health of your life but also cares about spiritual factors.
+                  Ăn uống lành mạnh không chỉ quan tâm đến sức khỏe cuộc sống mà
+                  còn quan tâm đến yếu tố tinh thần.{" "}
                 </p>
               </div>
             </div>
@@ -431,7 +328,7 @@ const HomePage = () => {
                 <div className="news-text-box">
                   <h3>
                     <a>
-                      You will vainly look for fruit on it in autumn.
+                      Bạn sẽ vô ích nếu tìm kiếm trái cây trên đó vào mùa thu.{" "}
                     </a>
                   </h3>
                   <p className="blog-meta">
@@ -439,11 +336,13 @@ const HomePage = () => {
                       <i className="fas fa-user" /> Admin
                     </span>
                     <span className="date">
-                      <i className="fas fa-calendar" /> 24 October, 2022
+                      <i className="fas fa-calendar" /> 24 Tháng 10, 2022
                     </span>
                   </p>
                   <p className="excerpt">
-                  In the crisp days of autumn, you'll search in vain for the bountiful fruit that once adorned its branches.
+                    Trong những ngày se lạnh của mùa thu, bạn sẽ tìm kiếm một
+                    cách vô ích những trái cây bội thu đã từng tô điểm cho cành
+                    của nó.{" "}
                   </p>
                 </div>
               </div>
@@ -459,20 +358,20 @@ const HomePage = () => {
                 ></img>
                 <div className="news-text-box">
                   <h3>
-                    <a>
-                      Good thoughts bear good fresh juicy fruit.
-                    </a>
+                    <a>Những ý nghĩ tốt sẽ mang lại trái ngọt tươi ngon. </a>
                   </h3>
                   <p className="blog-meta">
                     <span className="author">
                       <i className="fas fa-user" /> Admin
                     </span>
                     <span className="date">
-                      <i className="fas fa-calendar" /> 07 November, 2022
+                      <i className="fas fa-calendar" /> 07 Tháng 10, 2022
                     </span>
                   </p>
                   <p className="excerpt">
-                  Just as a well-tended orchard yields a bountiful harvest, a mind filled with good thoughts produces a life rich in joy.
+                    Như một vườn cây ăn quả được chăm sóc tốt mang lại mùa màng
+                    bội thu, một tâm hồn tràn đầy những suy nghĩ tốt đẹp sẽ tạo
+                    ra một cuộc sống tràn đầy niềm vui.{" "}
                   </p>
                 </div>
               </div>
@@ -489,7 +388,7 @@ const HomePage = () => {
                 <div className="news-text-box">
                   <h3>
                     <a>
-                      A man's worth has its season, like tomato.
+                      Giá trị của một người đàn ông có mùa, như quả cà chua.{" "}
                     </a>
                   </h3>
                   <p className="blog-meta">
@@ -497,11 +396,13 @@ const HomePage = () => {
                       <i className="fas fa-user" /> Admin
                     </span>
                     <span className="date">
-                      <i className="fas fa-calendar" /> 27 December, 2023
+                      <i className="fas fa-calendar" /> 27 Tháng 4, 2023
                     </span>
                   </p>
                   <p className="excerpt">
-                    Just like a tomato, a man's worth ripens with time and patience, reaching its peak in the right season of his life.
+                    Cũng giống như quả cà chua, giá trị của một người đàn ông
+                    chín muồi theo thời gian và sự kiên nhẫn, đạt đến đỉnh cao
+                    vào đúng thời điểm của cuộc đời.{" "}
                   </p>
                 </div>
               </div>

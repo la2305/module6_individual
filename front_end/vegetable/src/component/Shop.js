@@ -4,6 +4,11 @@ import { useEffect } from "react";
 import "../css/shop.css";
 import { getProductTypeList } from "../service/product/ProductTypeService";
 import { Link } from "react-router-dom";
+import swal from "sweetalert2";
+import { getUserByJwtToken } from "../service/user/UserService";
+import { createCart } from "../service/cart/CartService";
+
+
 
 const Shop = () => {
   const [productList, setProductList] = useState([]);
@@ -51,6 +56,19 @@ const Shop = () => {
   const sortProduct = (values) =>{
     console.log(values);
     setSort(values);
+  }
+
+
+  const clickCreateCart = async (productId) =>{
+    const userName = getUserByJwtToken();
+    await createCart(1,productId,userName.sub);
+    swal.fire({
+      icon: "success",
+      title: "Hoàn tất",
+      text: "Sản phẩm đã được thêm vào giỏ hàng hãy tiến hành thanh toán",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   }
 
   return (
@@ -110,9 +128,9 @@ const Shop = () => {
                   <p className="product-price">
                     {product.productPrice.toLocaleString("vi-VN") } VND
                   </p>
-                  <a href="cart.html" className="cart-btn">
-                    <i className="fas fa-shopping-cart" /> Add to Cart
-                  </a>
+                  <button onClick={()=>clickCreateCart(product.productId)} className="cart-btn cart-style">
+                    <i className="fas fa-shopping-cart" /> Thêm vào giỏ
+                  </button>
                 </div>
               </div>
             ))}

@@ -1,22 +1,55 @@
 import { useEffect, useState } from "react";
 import { getUserByJwtToken } from "../service/user/UserService";
-import { deleteCartByCartId, getAllCartByUserName } from "../service/cart/CartService";
+import {
+  deleteCartByCartId,
+  getAllCartByUserName,
+} from "../service/cart/CartService";
+import { createCart } from "../service/cart/CartService";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const [listCart,setListCart] = useState([]);
-  const loadListCart = async () =>{
+  const [listCart, setListCart] = useState([]);
+  const [totalMoney, setTotalMoney] = useState(1);
+
+  //list sản phẩm + xóa
+  const loadListCart = async () => {
     const userName = getUserByJwtToken();
     const data = await getAllCartByUserName(userName.sub);
     setListCart(data);
-  }
-  const clickDeleteCartByCartId = async (productId,userId) =>{
-    console.log(productId,userId);
-    await deleteCartByCartId(productId,userId);
+  };
+  const clickDeleteCartByCartId = async (productId, userId) => {
+    await deleteCartByCartId(productId, userId);
     loadListCart();
-  }
-  useEffect(()=>{
+  };
+  useEffect(() => {
     loadListCart();
-  },[])
+    getTotalMoney();
+  }, [listCart,totalMoney]);
+
+  //tăng giảm sản phẩm
+  const clickIncreaseProduct = async (productId) => {
+    const userName = getUserByJwtToken();
+    await createCart(1, productId, userName.sub);
+    loadListCart();
+  };
+  const clickDecreaseProduct = async (productId,quantityProductOrder) => {
+    if(quantityProductOrder==1){
+      return null;
+    }
+    const userName = getUserByJwtToken();
+    await createCart(-1, productId, userName.sub);
+    loadListCart();
+  };
+
+  //tính tổng tiền
+  const getTotalMoney = () => {
+    const total = listCart.reduce((accumulator, cart) => {
+      const productTotal = cart.productPrice * cart.quantityProductOrder;
+      return accumulator + productTotal;
+    }, 0);
+    setTotalMoney(total);
+  };
+  
 
   return (
     <>
@@ -39,26 +72,60 @@ const Cart = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {listCart.map((cart)=>(
+                      {listCart.map((cart) => (
                         <tr className="table-body-row">
-                        <td className="product-remove">
-                          <span onClick={() =>clickDeleteCartByCartId(cart.productId,cart.userId)}>
-                            <div className="far fa-window-close" />
-                          </span>
-                        </td>
-                        <td className="product-image">
-                          <img
-                            src={cart.imageAddress}
-                            alt=""
-                          />
-                        </td>
-                        <td className="product-name">{cart.productName}</td>
-                        <td className="product-quantity">
-                          <input type="number" value={cart.quantityProductOrder} />
-                        </td>
-                        <td className="product-total">{cart.quantityProductOrder}</td>
-                        <td className="product-price">{cart.productPrice.toLocaleString("vi-VN")}VND</td>
-                      </tr>
+                          <td className="product-remove">
+                            <span
+                              onClick={() =>
+                                clickDeleteCartByCartId(
+                                  cart.productId,
+                                  cart.userId
+                                )
+                              }
+                            >
+                              <div className="far fa-window-close" />
+                            </span>
+                          </td>
+                          <td className="product-image">
+                            <img src={cart.imageAddress} alt="" />
+                          </td>
+                          <td className="product-name">{cart.productName}</td>
+                          <td className="product-quantity">
+                            <button
+                              type="button"
+                              className="quantity-button"
+                              onClick={() =>
+                                clickDecreaseProduct(cart.productId,cart.quantityProductOrder)
+                              }
+                            >
+                              -
+                            </button>
+                            <input
+                              className="quantity-input m-2"
+                              id="valueQuantityProduct"
+                              type="number"
+                              disabled
+                              value={cart.quantityProductOrder}
+                            />
+                            <button
+                              type="button"
+                              className="quantity-button"
+                              onClick={() =>
+                                clickIncreaseProduct(cart.productId)
+                              }
+                            >
+                              +
+                            </button>
+                          </td>
+                          <td className="product-total">
+                            {cart.quantityProductOrder}
+                          </td>
+                          <td className="product-price">
+                            <strong>{(
+                              cart.productPrice * cart.quantityProductOrder
+                            ).toLocaleString("vi-VN")}</strong> VNĐ
+                          </td>
+                        </tr>
                       ))}
                     </tbody>
                   </table>
@@ -78,26 +145,26 @@ const Cart = () => {
                         <td>
                           <strong>Tổng tiền sản phẩm: </strong>
                         </td>
-                        <td>$500</td>
+                        <td><strong>{totalMoney.toLocaleString("vi-VN")}</strong> VND</td>
                       </tr>
                       <tr className="total-data">
                         <td>
                           <strong>Phí giao hàng: </strong>
                         </td>
-                        <td>0 VND</td>
+                        <td><strong>0</strong> VNĐ</td>
                       </tr>
                       <tr className="total-data">
                         <td>
                           <strong>Thành tiền: </strong>
                         </td>
-                        <td>$545</td>
+                        <td><strong>{totalMoney.toLocaleString("vi-VN")}</strong> VND</td>
                       </tr>
                     </tbody>
                   </table>
                   <div className="cart-buttons d-flex justify-content-center">
-                    <a href="checkout.html" className="boxed-btn black">
+                    <Link to={"/checkout"} className="boxed-btn black">
                       <button className="btn btn-warning">Thanh toán</button>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -34,6 +34,8 @@ const Header = () => {
     getUsername();
   }, []);
 
+  
+
   return (
     <>
       <div className="py-1 bg-header">
@@ -60,7 +62,7 @@ const Header = () => {
                 </div>
                 <div className="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
                   <span className="text-white">
-                    3-5 Business days delivery &amp; Free Returns
+                    Giao hàng miễn phí trong 3-5 ngày làm việc
                   </span>
                 </div>
               </div>
@@ -75,10 +77,13 @@ const Header = () => {
             id="ftco-navbar"
           >
             <div className="col-md">
-            <img className="logo" src="https://png.pngtree.com/png-vector/20191018/ourmid/pngtree-tree-logo-design-png-image_1824170.jpg"/>
-                <Link className="navbar-brand" to={"/"}>
+              <img
+                className="logo"
+                src="https://png.pngtree.com/png-vector/20191018/ourmid/pngtree-tree-logo-design-png-image_1824170.jpg"
+              />
+              <Link className="navbar-brand" to={"/"}>
                 Eating Well
-                </Link>
+              </Link>
               <button
                 className="navbar-toggler"
                 type="button"
@@ -95,45 +100,12 @@ const Header = () => {
               <div className="collapse navbar-collapse ">
                 <ul className="navbar-nav ml-auto">
                   <li className="nav-item">
-                    <a href="index.html" className="nav-link">
-                      Home
-                    </a>
+                    <Link to={"/shop"} className="nav-link">
+                      Mua hàng
+                    </Link>
                   </li>
-                  {/* ////////////// */}
-                  <li className="nav-item active dropdown">
-                    <a
-                      className="nav-link dropdown-toggle"
-                      href="#"
-                      data-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      Shop
-                    </a>
-                    <div className="dropdown-menu" aria-labelledby="dropdown04">
-                      <ul class="dropdown-menu">
-                        <li>
-                          <a class="dropdown-item" href="#">
-                            Action
-                          </a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item" href="#">
-                            Another action
-                          </a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item" href="#">
-                            Something else here
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  {/* ////////////// */}
                   <li className="nav-item">
-                    <a href="about.html" className="nav-link">
-                      About
-                    </a>
+                      <input className="nav-link" type="text" id="searchProduct" placeholder="Tìm sản phẩm" style={{color:'#00000'}}></input>
                   </li>
                   <li className="nav-item">
                     <a href="blog.html" className="nav-link">
@@ -142,8 +114,13 @@ const Header = () => {
                   </li>
                   <li className="nav-item">
                     <a href="contact.html" className="nav-link">
-                      Contact
+                      Liên lạc
                     </a>
+                  </li>
+                  <li className="nav-item">
+                    <Link to={"/checkout"} className="nav-link">
+                      Thanh toán
+                    </Link>
                   </li>
                   <li className="nav-item cta cta-colored">
                     <Link to={"/cart"} className="nav-link">
@@ -151,6 +128,39 @@ const Header = () => {
                       [0]
                     </Link>
                   </li>
+                  {JwtToken ? (
+                    <li className="nav-item">
+                      <Link class="nav-link" data-toggle="dropdown">
+                        {userName}
+                      </Link>
+                      <div
+                        class="dropdown-menu"
+                        aria-labelledby="dropdownMenuButton"
+                      >
+                        <Link class="dropdown-item" >
+                          Tài khoản
+                        </Link>
+                        <a class="dropdown-item" >
+                        <Link
+                              to={`/`}
+                              className="user-info text-dark"
+                              style={{ textDecoration: "none" }}
+                              onClick={() => handleLogOut()}
+                            >
+                              Thoát
+                            </Link>
+                        </a>
+                      </div>
+                    </li>
+                  ) : (
+                    <li className="nav-item">
+                    <div className="nav-link">
+                    <Link to={`/login`} className="user-info text-dark" style={{ textDecoration: "none" }}>
+                      Đăng nhập
+                    </Link>
+                    </div>
+                    </li>
+                  )}
                   <li className="nav-item">
                     <div className="nav-link">
                       <img
@@ -158,29 +168,6 @@ const Header = () => {
                         alt="user-img"
                         className="user-img"
                       />
-                    </div>
-                    {/* User */}
-                    <div>{/* Add your user-related content here */}</div>
-                  </li>
-                  <li className="nav-item">
-                    <div className="nav-link">
-                      <a className="user">
-                        {JwtToken ? (
-                          <>
-                            <Link
-                              to={`/`}
-                              className="user-info text-dark"
-                              onClick={() => handleLogOut()}
-                            >
-                              {userName} Logout
-                            </Link>
-                          </>
-                        ) : (
-                          <Link to={`/login`} className="user-info text-dark">
-                            Login
-                          </Link>
-                        )}
-                      </a>
                     </div>
                   </li>
                 </ul>
