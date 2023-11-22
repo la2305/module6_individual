@@ -13,7 +13,7 @@ import java.util.List;
 
 @Repository
 public interface ICartRepository extends JpaRepository<Cart,Long> {
-    @Query(nativeQuery = true,value = " SELECT product.name as productName, product.price as productPrice, image.image_address as imageAddress, cart.cart_id as cartId, cart.quantity_product_order as quantityProductOrder, cart.product_id as productId, cart.user_id as userId, users.user_name as userName" +
+    @Query(nativeQuery = true,value = " SELECT product.name as productName, product.price as productPrice,product.weight as weight, image.image_address as imageAddress, cart.cart_id as cartId, cart.quantity_product_order as quantityProductOrder, cart.product_id as productId, cart.user_id as userId, users.user_name as userName" +
             " FROM product " +
             " join cart on cart.product_id = product.product_id " +
             " join users on users.user_id = cart.user_id " +

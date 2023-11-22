@@ -59,7 +59,6 @@ const CheckOut = () => {
     }
   };
 
-
   return (
     <>
       {/* check out section */}

@@ -6,11 +6,11 @@ import { getProductTypeList } from "../service/product/ProductTypeService";
 import { Link } from "react-router-dom";
 import swal from "sweetalert2";
 import { getUserByJwtToken } from "../service/user/UserService";
-import { createCart } from "../service/cart/CartService";
+import { createCart, getAllCartByUserName } from "../service/cart/CartService";
 
 
 
-const Shop = () => {
+const Shop = ({updateCartLength}) => {
   const [productList, setProductList] = useState([]);
   const [productTypeList, setProductTypeList] = useState([]);
   const [page, setPage] = useState(0);
@@ -62,6 +62,7 @@ const Shop = () => {
   const clickCreateCart = async (productId) =>{
     const userName = getUserByJwtToken();
     await createCart(1,productId,userName.sub);
+    loadListCart();
     swal.fire({
       icon: "success",
       title: "Hoàn tất",
@@ -69,6 +70,11 @@ const Shop = () => {
       showConfirmButton: false,
       timer: 1500,
     });
+  }
+  const loadListCart = async () =>{
+    const userName = getUserByJwtToken();
+    const data = await getAllCartByUserName(userName.sub);
+    updateCartLength(data.length);
   }
 
   return (
@@ -128,7 +134,7 @@ const Shop = () => {
                   <p className="product-price">
                     {product.productPrice.toLocaleString("vi-VN") } VND
                   </p>
-                  <button onClick={()=>clickCreateCart(product.productId)} className="cart-btn cart-style">
+                  <button onClick={()=>clickCreateCart(product.productId)} className="btn btn-outline-dark">
                     <i className="fas fa-shopping-cart" /> Thêm vào giỏ
                   </button>
                 </div>

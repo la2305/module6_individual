@@ -7,7 +7,7 @@ import {
 import { createCart } from "../service/cart/CartService";
 import { Link } from "react-router-dom";
 
-const Cart = () => {
+const Cart = ({ updateCartLength }) => {
   const [listCart, setListCart] = useState([]);
   const [totalMoney, setTotalMoney] = useState(1);
 
@@ -16,6 +16,7 @@ const Cart = () => {
     const userName = getUserByJwtToken();
     const data = await getAllCartByUserName(userName.sub);
     setListCart(data);
+    updateCartLength(data.length);
   };
   const clickDeleteCartByCartId = async (productId, userId) => {
     await deleteCartByCartId(productId, userId);
@@ -24,7 +25,7 @@ const Cart = () => {
   useEffect(() => {
     loadListCart();
     getTotalMoney();
-  }, [listCart,totalMoney]);
+  }, [listCart.length,listCart]);
 
   //tăng giảm sản phẩm
   const clickIncreaseProduct = async (productId) => {
@@ -49,7 +50,6 @@ const Cart = () => {
     }, 0);
     setTotalMoney(total);
   };
-  
 
   return (
     <>
@@ -118,12 +118,12 @@ const Cart = () => {
                             </button>
                           </td>
                           <td className="product-total">
-                            {cart.quantityProductOrder}
+                            {(cart.quantityProductOrder*cart.weight)} Kg
                           </td>
                           <td className="product-price">
                             <strong>{(
                               cart.productPrice * cart.quantityProductOrder
-                            ).toLocaleString("vi-VN")}</strong> VNĐ
+                            ).toLocaleString("vi-VN")} VNĐ</strong>
                           </td>
                         </tr>
                       ))}
@@ -143,27 +143,27 @@ const Cart = () => {
                     <tbody>
                       <tr className="total-data">
                         <td>
-                          <strong>Tổng tiền sản phẩm: </strong>
+                          Tổng tiền sản phẩm:
                         </td>
-                        <td><strong>{totalMoney.toLocaleString("vi-VN")}</strong> VND</td>
+                        <td><strong>{totalMoney.toLocaleString("vi-VN")} VND</strong></td>
                       </tr>
                       <tr className="total-data">
                         <td>
-                          <strong>Phí giao hàng: </strong>
+                          Phí giao hàng:
                         </td>
-                        <td><strong>0</strong> VNĐ</td>
+                        <td><strong>0 VNĐ</strong></td>
                       </tr>
                       <tr className="total-data">
                         <td>
-                          <strong>Thành tiền: </strong>
+                          Thành tiền:
                         </td>
-                        <td><strong>{totalMoney.toLocaleString("vi-VN")}</strong> VND</td>
+                        <td><strong>{totalMoney.toLocaleString("vi-VN")} VND</strong></td>
                       </tr>
                     </tbody>
                   </table>
-                  <div className="cart-buttons d-flex justify-content-center">
-                    <Link to={"/checkout"} className="boxed-btn black">
-                      <button className="btn btn-warning">Thanh toán</button>
+                  <div className="mt-4  d-flex justify-content-center">
+                    <Link to={"/checkout"}>
+                      <button className="btn btn-dark">Thanh toán</button>
                     </Link>
                   </div>
                 </div>

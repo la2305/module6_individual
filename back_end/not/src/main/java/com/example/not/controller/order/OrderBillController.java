@@ -20,8 +20,6 @@ public class OrderBillController {
     @PostMapping("/create")
     public ResponseEntity<?> createOrderBill(@RequestBody OrderBillDto orderBillDto,
                                              @RequestParam(name = "userName") String userName){
-        System.out.println(orderBillDto);
-        System.out.println(userName);
         iOrderBillService.createOrderBill(orderBillDto,userName);
         return new ResponseEntity<>(HttpStatus.OK);
     }

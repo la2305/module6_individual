@@ -59,7 +59,8 @@ const ProductDetail = () => {
   return (
     <>
       <>
-        <hr></hr>
+        <br></br>
+        <br></br>
         {/* single product */}
         <div className="single-product mt-150 mb-150">
           <div className="container">
@@ -85,7 +86,7 @@ const ProductDetail = () => {
                       <input className="quantity-input m-2" type="number" id="quantityProductOrder" value={quantity} min="1" onChange={(e) => setQuantity(parseInt(e.target.value))}/>
                       <button type="button" className="quantity-button" onClick={increaseQuantity}>+</button>
                     </form>
-                    <button className="cart-btn mt-3 cart-style" onClick={()=>clickCreateCart()}>
+                    <button className="mt-3 btn btn-outline-dark" onClick={()=>clickCreateCart()}>
                       <i className="fas fa-shopping-cart" /> Thêm vào giỏ
                     </button>
                     

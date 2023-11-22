@@ -4,10 +4,10 @@ import { useState } from "react";
 import { getProductList } from "../service/product/ProductService";
 import { useEffect } from "react";
 import { getUserByJwtToken } from "../service/user/UserService";
-import { createCart } from "../service/cart/CartService";
+import { createCart, getAllCartByUserName } from "../service/cart/CartService";
 import swal from "sweetalert2";
 
-const HomePage = () => {
+const HomePage = ({updateCartLength}) => {
   const [productList, setProductList] = useState([]);
   const [page, setPage] = useState(0);
   const [searchType, setSearchType] = useState("");
@@ -25,6 +25,7 @@ const HomePage = () => {
   const clickCreateCart = async (productId) =>{
     const userName = getUserByJwtToken();
     await createCart(1,productId,userName.sub);
+    loadListCart();
     swal.fire({
       icon: "success",
       title: "Hoàn tất",
@@ -32,6 +33,11 @@ const HomePage = () => {
       showConfirmButton: false,
       timer: 1500,
     });
+  }
+  const loadListCart = async () =>{
+    const userName = getUserByJwtToken();
+    const data = await getAllCartByUserName(userName.sub);
+    updateCartLength(data.length);
   }
 
   return (
@@ -140,10 +146,12 @@ const HomePage = () => {
                         <div className="single-product-item">
                           <div className="product-image">
                             <a href="single-product.html">
+                              <Link to={`/product-detail/${product.productId}`}>
                               <img
                                 src={product.imageAddress}
                                 alt={product.productName}
                               />
+                              </Link>
                             </a>
                           </div>
                           <h3>{product.productName}</h3>
@@ -152,7 +160,7 @@ const HomePage = () => {
                           </p>
                           <button
                             onClick={() => clickCreateCart(product.productId)}
-                            className="cart-btn cart-style"
+                            className=" btn btn-outline-dark"
                           >
                             <i className="fas fa-shopping-cart" /> Thêm vào giỏ
                           </button>

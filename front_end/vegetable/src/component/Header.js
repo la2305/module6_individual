@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getUserByJwtToken } from "../service/user/UserService";
 
-const Header = () => {
+const Header = ({ cartLength }) => {
   const [JwtToken, setJwtToken] = useState(localStorage.getItem("JWT"));
   const [userName, setUserName] = useState(null);
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ const Header = () => {
 
   useEffect(() => {
     getUsername();
-  }, []);
+  }, [cartLength]);
 
   
 
@@ -125,7 +125,7 @@ const Header = () => {
                   <li className="nav-item cta cta-colored">
                     <Link to={"/cart"} className="nav-link">
                       <i class="fa-solid fa-cart-shopping"></i>
-                      [0]
+                      [{cartLength}]
                     </Link>
                   </li>
                   {JwtToken ? (
@@ -137,7 +137,7 @@ const Header = () => {
                         class="dropdown-menu"
                         aria-labelledby="dropdownMenuButton"
                       >
-                        <Link class="dropdown-item" >
+                        <Link class="dropdown-item" to={"/detailAccount"}>
                           Tài khoản
                         </Link>
                         <a class="dropdown-item" >

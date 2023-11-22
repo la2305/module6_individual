@@ -4,7 +4,6 @@ import com.example.not.IProjection.cart.CartDto;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
-@NotNull
 public class OrderBillDto {
     private Long orderBillId;
     private String address;
@@ -22,7 +21,13 @@ public class OrderBillDto {
         this.totalMoney = totalMoney;
         this.cartDtoList = cartDtoList;
     }
+    public OrderBillDto( String address, String note, Double totalMoney, List<CartDto> cartDtoList) {
 
+        this.address = address;
+        this.note = note;
+        this.totalMoney = totalMoney;
+        this.cartDtoList = cartDtoList;
+    }
     public Long getOrderBillId() {
         return orderBillId;
     }

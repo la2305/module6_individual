@@ -5,6 +5,7 @@ public interface ICartProjection {
     String getImageAddress();;
     String getProductName();;
     Double getProductPrice();;
+    Double getWeight();;
     Integer getQuantityProductOrder();;
     Long getProductId();;
     int getUserId();;

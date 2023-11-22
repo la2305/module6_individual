@@ -11,6 +11,7 @@ public class Product {
     private String description;
     private String name;
     private Double price;
+    private Double weight;
     @ManyToOne
     @JoinColumn(name = "type_id",referencedColumnName = "typeId")
     private Type type;
@@ -18,11 +19,12 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long productId, String description, String name, Double price, Type type) {
+    public Product(Long productId, String description, String name, Double price, Double weight, Type type) {
         this.productId = productId;
         this.description = description;
         this.name = name;
         this.price = price;
+        this.weight = weight;
         this.type = type;
     }
 
@@ -64,5 +66,13 @@ public class Product {
 
     public void setType(Type type) {
         this.type = type;
+    }
+
+    public Double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Double weight) {
+        this.weight = weight;
     }
 }
