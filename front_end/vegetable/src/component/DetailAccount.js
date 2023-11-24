@@ -4,20 +4,50 @@ import {
   getUserByJwtToken,
 } from "../service/user/UserService";
 import { useEffect } from "react";
+import { getOrderBillListByUserId } from "../service/order/AddOrder";
+
+const currency = (number) => {
+  const roundedNumber = Math.floor(number);
+  const formattedNumber = roundedNumber.toLocaleString("vi-VN");
+  return formattedNumber;
+};
 
 const DetailAccount = () => {
   const [infoUser, setInfoUser] = useState();
+  const [orderBillList, setOrderBillList] = useState([]);
+
   const getUser = async () => {
     const data = getUserByJwtToken();
-    const response = await getInfoUserByUserName(data.sub);
-    setInfoUser(response);
+    if (data != null) {
+      const response = await getInfoUserByUserName(data.sub);
+      setInfoUser(response);
+    } else {
+      return null;
+    }
   };
+
+  const getOrderBillList = async () => {
+    const data = getUserByJwtToken();
+    if (data != null) {
+      const dataOrderBill = await getOrderBillListByUserId(data.sub);
+      setOrderBillList(dataOrderBill);
+    }else{
+      return null;
+    }
+  };
+
   useEffect(() => {
     getUser();
+    getOrderBillList();
   }, []);
   if (!infoUser) {
     return null;
   }
+
+  if (!orderBillList) {
+    return null;
+  }
+
   return (
     <>
       <hr></hr>
@@ -41,9 +71,8 @@ const DetailAccount = () => {
               <table className="cart-table">
                 <thead className="cart-table-head">
                   <tr className="table-head-row">
-                    <th className="product-remove" >STT</th>
+                    <th className="product-remove">STT</th>
                     <th className="product-image">Ngày đặt hàng</th>
-                    <th className="product-image">Thời gian đặt hàng</th>
                     <th className="product-image">Tên người nhận</th>
                     <th className="product-name">Địa chỉ giao hàng</th>
                     <th className="product-name">Số điện thoại</th>
@@ -51,45 +80,22 @@ const DetailAccount = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {/* {listCart.map((cart) => ( */}
+                  {orderBillList.map((order, index) => (
                     <tr className="table-body-row">
                       <td className="product-remove">
-                        <span
-                         
-                        >
-                          <div className="far fa-window-close" />
-                        </span>
+                        <span>{index + 1}</span>
                       </td>
-                      <td className="product-image">
-                        {/* <img src={cart.imageAddress} alt="" /> */}
+                      <td className="product-image">{order.dateOfOder}</td>
+                      <td className="product-quantity ">
+                        {order.users.userName}
                       </td>
-                      <td className="product-name">
-                        {/* {cart.productName} */}
-                        </td>
-                      <td className="product-quantity">
-                        
-                      </td>
-                      <td className="product-total">
-                        {/* {cart.quantityProductOrder} */}
-                      </td>
+                      <td className="product-total">{order.address}</td>
+                      <td className="product-price">{order.users.phone}</td>
                       <td className="product-price">
-                        {/* <strong>
-                          {(
-                            cart.productPrice * cart.quantityProductOrder
-                          ).toLocaleString("vi-VN")}{" "}
-                          VNĐ
-                        </strong> */}
-                      </td>
-                      <td className="product-price">
-                        {/* <strong>
-                          {(
-                            cart.productPrice * cart.quantityProductOrder
-                          ).toLocaleString("vi-VN")}{" "}
-                          VNĐ
-                        </strong> */}
+                        {currency(order.totalMoney)} VND
                       </td>
                     </tr>
-                  {/* ))} */}
+                  ))}
                 </tbody>
               </table>
             </div>

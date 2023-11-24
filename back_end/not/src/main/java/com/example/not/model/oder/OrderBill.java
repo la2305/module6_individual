@@ -12,13 +12,12 @@ public class OrderBill {
     @Column(columnDefinition = "DATE")
     private String dateOfOder;
     private Boolean paymentStatus;
-//    @DateTimeFormat(pattern = "dd-MM-yyyy")
-//    private LocalDate timeOfOrder;
     @Column(columnDefinition = "TIME")
     private String timeOfOrder;
     private Double totalMoney;
     private String address;
     private String note;
+
     @ManyToOne
     @JoinColumn(name = "user_id",referencedColumnName = "userId")
     private Users users;

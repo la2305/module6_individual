@@ -38,14 +38,14 @@ function App() {
 
       <Routes>
         <Route path="/cart"  element={<Cart updateCartLength={updateCartLength}></Cart>}></Route>
-        <Route path="/product-Detail/:id" element={<ProductDetail></ProductDetail>}></Route>
+        <Route path="/product-Detail/:id" element={<ProductDetail updateCartLength={updateCartLength}></ProductDetail>}></Route>
         <Route path="/" element={<HomePage updateCartLength={updateCartLength}></HomePage>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/shop" element={<Shop updateCartLength={updateCartLength}></Shop>}></Route>
         <Route path="/checkout" element={<CheckOut></CheckOut>}></Route>
         <Route path="/searchProduct" element={<SearchProduct></SearchProduct>}></Route>
-        <Route path="/detailAccount" element={<DetailAccount></DetailAccount>}></Route>
+        <Route path="/detailAccount" element={<DetailAccount ></DetailAccount>}></Route>
       </Routes>
 
       {noShowHeaderFooter && (

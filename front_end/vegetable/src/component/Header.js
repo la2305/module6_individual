@@ -62,7 +62,7 @@ const Header = ({ cartLength }) => {
                 </div>
                 <div className="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
                   <span className="text-white">
-                    Giao hàng miễn phí trong 3-5 ngày làm việc
+                    Giao hàng miễn phí trong 1-3 ngày làm việc
                   </span>
                 </div>
               </div>
@@ -116,11 +116,6 @@ const Header = ({ cartLength }) => {
                     <a href="contact.html" className="nav-link">
                       Liên lạc
                     </a>
-                  </li>
-                  <li className="nav-item">
-                    <Link to={"/checkout"} className="nav-link">
-                      Thanh toán
-                    </Link>
                   </li>
                   <li className="nav-item cta cta-colored">
                     <Link to={"/cart"} className="nav-link">

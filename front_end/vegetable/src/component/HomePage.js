@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/homapage.css";
 import { useState } from "react";
 import { getProductList } from "../service/product/ProductService";
@@ -7,11 +7,12 @@ import { getUserByJwtToken } from "../service/user/UserService";
 import { createCart, getAllCartByUserName } from "../service/cart/CartService";
 import swal from "sweetalert2";
 
-const HomePage = ({updateCartLength}) => {
+const HomePage = ({ updateCartLength }) => {
   const [productList, setProductList] = useState([]);
   const [page, setPage] = useState(0);
   const [searchType, setSearchType] = useState("");
   const [sort, setSort] = useState("productId");
+  const navigate = useNavigate();
 
   const loadProductList = async () => {
     const data = await getProductList(page, searchType, sort);
@@ -22,23 +23,32 @@ const HomePage = ({updateCartLength}) => {
     loadProductList();
   }, []);
 
-  const clickCreateCart = async (productId) =>{
+  const clickCreateCart = async (productId) => {
     const userName = getUserByJwtToken();
-    await createCart(1,productId,userName.sub);
-    loadListCart();
-    swal.fire({
-      icon: "success",
-      title: "Hoàn tất",
-      text: "Sản phẩm đã được thêm vào giỏ hàng hãy tiến hành thanh toán",
-      showConfirmButton: false,
-      timer: 1500,
-    });
-  }
-  const loadListCart = async () =>{
+    if (userName!=null) {
+      await createCart(1, productId, userName.sub);
+      loadListCart();
+      swal.fire({
+        icon: "success",
+        title: "Hoàn tất",
+        text: "Sản phẩm đã được thêm vào giỏ hàng hãy tiến hành thanh toán",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }else{
+      navigate("/login")
+      swal.fire({
+        icon: "error",
+        title: "Đăng nhập",
+        text: "Để thêm sản phẩm vào giỏ hàng!",
+      });
+    }
+  };
+  const loadListCart = async () => {
     const userName = getUserByJwtToken();
     const data = await getAllCartByUserName(userName.sub);
     updateCartLength(data.length);
-  }
+  };
 
   return (
     <>
@@ -147,10 +157,10 @@ const HomePage = ({updateCartLength}) => {
                           <div className="product-image">
                             <a href="single-product.html">
                               <Link to={`/product-detail/${product.productId}`}>
-                              <img
-                                src={product.imageAddress}
-                                alt={product.productName}
-                              />
+                                <img
+                                  src={product.imageAddress}
+                                  alt={product.productName}
+                                />
                               </Link>
                             </a>
                           </div>
@@ -298,9 +308,9 @@ const HomePage = ({updateCartLength}) => {
                   </div>
                 </div>
               </div>
-              <a href="cart.html" className="cart-btn mt-3">
+              <button className="btn btn-outline-dark">
                 <i className="fas fa-shopping-cart" /> Thêm vào giỏ
-              </a>
+              </button>
             </div>
           </div>
         </div>

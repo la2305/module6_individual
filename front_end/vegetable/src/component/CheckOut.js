@@ -6,7 +6,7 @@ import {
 import { getAllCartByUserName } from "../service/cart/CartService";
 import Paypal from "./Paypal";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 
@@ -15,35 +15,47 @@ const CheckOut = () => {
   const [totalMoney, setTotalMoney] = useState(0);
   const [infoUser, setInfoUser] = useState();
   const [checkOut, setCheckOut] = useState(false);
-  const [order, setOrder] = useState();
+  const [order, setOrder] = useState(null);
   const navigate = useNavigate();
 
   //Load giỏ hàng
   const loadListCart = async () => {
     const userName = getUserByJwtToken();
-    const data = await getAllCartByUserName(userName.sub);
-    setListCart(data);
+    if (userName != null) {
+      const data = await getAllCartByUserName(userName.sub);
+      setListCart(data);
+    } else {
+      return null;
+    }
   };
+
   //Load thông tin khách hàng
   const loadUserByUserName = async () => {
     const userName = getUserByJwtToken();
-    const data = await getInfoUserByUserName(userName.sub);
-    setInfoUser(data);
+    if (userName != null) {
+      const data = await getInfoUserByUserName(userName.sub);
+      setInfoUser(data);
+    } else {
+      return null;
+    }
   };
+
   //tính tổng tiền
   const getTotalMoney = () => {
     const total = listCart.reduce((accumulator, cart) => {
       const productTotal = cart.productPrice * cart.quantityProductOrder;
       return accumulator + productTotal;
     }, 0);
-    setTotalMoney(total);
+    if (total > 0) {
+      setTotalMoney(total);
+    }
   };
 
   useEffect(() => {
     loadListCart();
     loadUserByUserName();
     getTotalMoney();
-  }, [listCart.length]);
+  }, [listCart.length, order]);
 
   if (!infoUser) {
     return null;
@@ -52,12 +64,52 @@ const CheckOut = () => {
   const addToOrder = async (values) => {
     if (infoUser.userName) {
       setCheckOut(true);
-      setOrder(values)
+      setOrder(values);
       navigate("/checkout");
     } else {
       Swal.fire("Cập nhật đủ thông tin cá nhân");
     }
   };
+
+  if (totalMoney === 0) {
+    return (
+      <>
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-lg-6">
+              <div className="card text-center">
+                <div className="card-body">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="150"
+                    height="200"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#28a745"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M8 14.5l3 3L18 10" />
+                  </svg>
+                  <h2 className="card-title">Thanh toán thành công!</h2>
+                  <p className="card-text">Cảm ơn bạn đã thanh toán.</p>
+                  <p className="card-text">
+                    Đơn hàng của bạn đã được xác nhận và đang được xử lý. Chúng
+                    tôi sẽ thông báo cho bạn khi đơn hàng được gửi đi.
+                  </p>
+                  <Link to="/shop" className="btn btn-dark">
+                    Tiếp tục mua sắm
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -74,14 +126,13 @@ const CheckOut = () => {
             validationSchema={Yup.object({
               address: Yup.string("").required("Địa chỉ không để trống"),
             })}
-            onSubmit={(values) =>{
-              addToOrder(values)}  
-            }
-            
+            onSubmit={(values) => {
+              addToOrder(values);
+            }}
           >
             <Form>
               <div className="row">
-                <div className="col-lg-8">
+                <div className="col-lg-8 col-md-12">
                   <div className="checkout-accordion-wrap">
                     <div className="accordion" id="accordionExample">
                       <div className="card single-accordion">
@@ -122,7 +173,12 @@ const CheckOut = () => {
                                   />
                                 </p>
                                 <p>
-                                  <Field type="text" id="address" name="address" placeholder="Địa chỉ" />
+                                  <Field
+                                    type="text"
+                                    id="address"
+                                    name="address"
+                                    placeholder="Địa chỉ"
+                                  />
                                   <ErrorMessage
                                     name="address"
                                     className="text-danger"
@@ -151,9 +207,9 @@ const CheckOut = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-4">
+                <div className="col-md-4">
                   <div className="order-details-wrap">
-                    <table className="order-details">
+                    <table className="order-details w-100">
                       <thead>
                         <tr>
                           <th>Sản phẩm</th>
@@ -204,19 +260,14 @@ const CheckOut = () => {
                         </tr>
                       </tbody>
                     </table>
-                    <div className="mt-3"></div>
-                    {checkOut ? (
-                      <Paypal
-                        propData1={totalMoney}
-                        propData2={order}
-                      ></Paypal>
+                    {checkOut && order.totalMoney > 0 ? (
+                      <Paypal propData1={totalMoney} propData2={order}></Paypal>
                     ) : (
-                      <button
-                        className="boxed-btn"
-                        type="submit"
-                      >
-                        Thanh toán
-                      </button>
+                      <div className="mt-4 d-flex justify-content-center">
+                        <button className="btn btn-dark" type="submit">
+                          Thanh toán
+                        </button>
+                      </div>
                     )}
                   </div>
                 </div>

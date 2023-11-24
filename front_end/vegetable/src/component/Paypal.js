@@ -1,12 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
 import swal from "sweetalert2";
-import { PayPalButtons } from '@paypal/react-paypal-js';
+import { PayPalButtons } from "@paypal/react-paypal-js";
 import { getUserByJwtToken } from "../service/user/UserService";
-import {addOrder} from "../service/order/AddOrder"
+import { addOrder } from "../service/order/AddOrder";
 
 export default function Paypal(props) {
   const paypal = useRef();
-
 
   return (
     <div>
@@ -15,7 +14,6 @@ export default function Paypal(props) {
           const price = parseFloat(props.propData1);
           const priceUsd = parseInt(price / 23000);
           return actions.order.create({
-
             intent: "CAPTURE",
             purchase_units: [
               {
@@ -27,19 +25,16 @@ export default function Paypal(props) {
               },
             ],
           });
-
         }}
         onApprove={async (data, actions) => {
           const order = await actions.order.capture();
-          
+
           const res = getUserByJwtToken();
           if (res != null) {
             await addOrder(props.propData2, res.sub);
-           }
-          swal.fire("Mua hàng thành công !");
-          window.location.reload()
-        }
-        }
+          }
+          window.location.reload();
+        }}
         onError={(err) => {
           console.log(err);
           swal.fire("Thanh toán không thành công!", "", "error");

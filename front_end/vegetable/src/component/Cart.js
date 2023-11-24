@@ -5,7 +5,8 @@ import {
   getAllCartByUserName,
 } from "../service/cart/CartService";
 import { createCart } from "../service/cart/CartService";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import swal from "sweetalert2";
 
 const Cart = ({ updateCartLength }) => {
   const [listCart, setListCart] = useState([]);
@@ -14,9 +15,13 @@ const Cart = ({ updateCartLength }) => {
   //list sản phẩm + xóa
   const loadListCart = async () => {
     const userName = getUserByJwtToken();
-    const data = await getAllCartByUserName(userName.sub);
-    setListCart(data);
-    updateCartLength(data.length);
+    if (userName != null) {
+      const data = await getAllCartByUserName(userName.sub);
+      setListCart(data);
+      updateCartLength(data.length);
+    } else {
+      return null;
+    }
   };
   const clickDeleteCartByCartId = async (productId, userId) => {
     await deleteCartByCartId(productId, userId);
@@ -25,7 +30,7 @@ const Cart = ({ updateCartLength }) => {
   useEffect(() => {
     loadListCart();
     getTotalMoney();
-  }, [listCart.length,listCart]);
+  }, [listCart.length, listCart]);
 
   //tăng giảm sản phẩm
   const clickIncreaseProduct = async (productId) => {
@@ -33,8 +38,8 @@ const Cart = ({ updateCartLength }) => {
     await createCart(1, productId, userName.sub);
     loadListCart();
   };
-  const clickDecreaseProduct = async (productId,quantityProductOrder) => {
-    if(quantityProductOrder==1){
+  const clickDecreaseProduct = async (productId, quantityProductOrder) => {
+    if (quantityProductOrder == 1) {
       return null;
     }
     const userName = getUserByJwtToken();
@@ -95,7 +100,10 @@ const Cart = ({ updateCartLength }) => {
                               type="button"
                               className="quantity-button"
                               onClick={() =>
-                                clickDecreaseProduct(cart.productId,cart.quantityProductOrder)
+                                clickDecreaseProduct(
+                                  cart.productId,
+                                  cart.quantityProductOrder
+                                )
                               }
                             >
                               -
@@ -118,12 +126,18 @@ const Cart = ({ updateCartLength }) => {
                             </button>
                           </td>
                           <td className="product-total">
-                            {(cart.quantityProductOrder*cart.weight)} Kg
+                            {parseFloat(
+                              cart.quantityProductOrder * cart.weight
+                            ).toFixed(2)}{" "}
+                            Kg
                           </td>
                           <td className="product-price">
-                            <strong>{(
-                              cart.productPrice * cart.quantityProductOrder
-                            ).toLocaleString("vi-VN")} VNĐ</strong>
+                            <strong>
+                              {(
+                                cart.productPrice * cart.quantityProductOrder
+                              ).toLocaleString("vi-VN")}{" "}
+                              VNĐ
+                            </strong>
                           </td>
                         </tr>
                       ))}
@@ -142,29 +156,45 @@ const Cart = ({ updateCartLength }) => {
                     </thead>
                     <tbody>
                       <tr className="total-data">
+                        <td>Tổng tiền sản phẩm:</td>
                         <td>
-                          Tổng tiền sản phẩm:
+                          <strong>
+                            {totalMoney.toLocaleString("vi-VN")} VND
+                          </strong>
                         </td>
-                        <td><strong>{totalMoney.toLocaleString("vi-VN")} VND</strong></td>
                       </tr>
                       <tr className="total-data">
+                        <td>Phí giao hàng:</td>
                         <td>
-                          Phí giao hàng:
+                          <strong>0 VNĐ</strong>
                         </td>
-                        <td><strong>0 VNĐ</strong></td>
                       </tr>
                       <tr className="total-data">
+                        <td>Thành tiền:</td>
                         <td>
-                          Thành tiền:
+                          <strong>
+                            {totalMoney.toLocaleString("vi-VN")} VND
+                          </strong>
                         </td>
-                        <td><strong>{totalMoney.toLocaleString("vi-VN")} VND</strong></td>
                       </tr>
                     </tbody>
                   </table>
                   <div className="mt-4  d-flex justify-content-center">
-                    <Link to={"/checkout"}>
-                      <button className="btn btn-dark">Thanh toán</button>
-                    </Link>
+                    {totalMoney === 0 ? (
+                        <button onClick={
+                          () => swal.fire({
+                            icon: "error",
+                            title: "Thanh toán thất bại",
+                            text: "Không có sản phẩm để thanh toán",
+                            showConfirmButton: false,
+                            timer: 1500,
+                          }) 
+                        } className="btn btn-dark">Thanh toán</button>
+                    ) : (
+                      <Link to={"/checkout"}>
+                        <button className="btn btn-dark">Thanh toán</button>
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>

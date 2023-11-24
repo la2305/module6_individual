@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/test")
 public class TestController {
     ERole abc;
-
     @GetMapping("/all")
     public String allAccess(){
         abc = ERole.ROLE_BUSINESS;

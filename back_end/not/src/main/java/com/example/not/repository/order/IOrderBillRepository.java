@@ -21,6 +21,8 @@ public interface IOrderBillRepository extends JpaRepository<OrderBill,Integer> {
 
     @Query(nativeQuery = true,value = " select order_bill.order_bill_id, order_bill.address, order_bill.date_of_oder,order_bill.note ,order_bill.payment_status , order_bill.time_of_order , order_bill.total_money, order_bill.user_id " +
             " from order_bill " +
-            " where order_bill.user_id = :userId ")
+            " where order_bill.user_id = :userId " +
+            " order by order_bill.order_bill_id desc " +
+            " limit 10 ")
     List<OrderBill> getOrderBillByUserId(int userId);
 }
